@@ -5,7 +5,7 @@ export const initialState = {
     loader: false,
 
     searchedUser:"",
-    theme:"light"
+    theme:"dark"
   };
   
   export function dataReducer(state, action) {

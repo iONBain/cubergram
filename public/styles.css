@@ -68,6 +68,9 @@ body{
 .f-bold{
     font-weight: 600;
 }
+.f-normal{
+    font-weight: normal;
+}
 
 /* texts */
 .text-justify{
@@ -147,8 +150,8 @@ input::placeholder{
 .w-100{
     width: 100%;
 }
-.max-width-100{
-    
+.p-0-0-10-10{
+    padding: 0 0 10px 10px;
 }
 /* mouses */
 .m-pointer{

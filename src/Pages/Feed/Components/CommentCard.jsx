@@ -1,9 +1,11 @@
 const CommentCard = ({commentData}) => {
-    const {userName,comment} = commentData
+    const {username,comment} = commentData
+    
     return (
         <div>
-           <p>{userName}</p>
-           <p>{comment}</p>
+           <p> <span className="f-bold accent">{username} </span> 
+             {comment}
+           </p>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 .main-post-card{
     /* margin: 0 auto; */
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: start;
     width: 75%;
     border: 2px solid var(--grey);
     border-radius: 5px;
@@ -9,13 +9,16 @@
 
 
 .user-avatar-img{
-    width: 3rem
+    width: 2.5rem
 }
 
-/* .main-post-card img {
-    min-width: 100%;
-    object-fit: cover;
+ .main-post-img {
+    margin: 0 auto;
+    min-width: 30%;
+    /* max-height: 20%; */
+    object-fit: contain;
 }
+/*
 .post-content{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -35,3 +38,10 @@
     color: var(--grey);
 }
  */
+
+ .comment-section{
+    /* background-color: red; */
+    width: 100%;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+ }

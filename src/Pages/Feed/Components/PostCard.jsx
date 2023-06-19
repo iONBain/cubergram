@@ -4,7 +4,8 @@ import { FiMoreVertical } from "react-icons/fi";
 import { DataContext } from "../../../Contexts/DataContext";
 import { Link, useNavigate } from "react-router-dom";
 import { getSinglePost } from "../../../services/postTxn";
-import "./components.css"
+import "./components.css";
+import CommentCard from "./CommentCard";
 
 const PostCard = ({ postData, showComments }) => {
   const {
@@ -38,16 +39,17 @@ const PostCard = ({ postData, showComments }) => {
     <div className="flex-col main-post-card">
       {/* header */}
       <p className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-10">
-        <Link to={`/profile/${userID}`} className="text-deco-none flex-row flex-center gap-8">
+        <Link
+          to={`/profile/${userID}`}
+          className="text-deco-none flex-row flex-center gap-8"
+        >
           <img src={userAvatar} className="user-avatar-img" alt="" />
-          
-          <p>
-            {username}
-            </p>
-          {/* {userID} */}
+
+          <p>{username}</p>
         </Link>
         <FiMoreVertical className="m-pointer" />
       </p>
+
       {textPost ? (
         <p
           className="post-content p-10 text-justify m-pointer"
@@ -55,13 +57,16 @@ const PostCard = ({ postData, showComments }) => {
         >
           {textPost}
         </p>
-      ): ""}
+      ) : (
+        ""
+      )}
+
       {/* image of post */}
       {imageURL && (
         <img
           src={imageURL}
           alt={`${username}'s post here`}
-          className="img-profile m-pointer"
+          className="main-post-img m-pointer"
           onClick={() => handlePostPageRedirect()}
         />
       )}
@@ -81,10 +86,10 @@ const PostCard = ({ postData, showComments }) => {
       </section>
 
       {/* post likes */}
-      <p className="text-likes">{likeCount} Likes</p>
+      <p className="p-l-r-10 text-likes">{likeCount} Likes</p>
 
       {/* user-content */}
-      {imageURL && (
+      {caption && (
         <p
           className="post-content p-10 text-justify m-pointer"
           onClick={() => handlePostPageRedirect()}
@@ -95,13 +100,20 @@ const PostCard = ({ postData, showComments }) => {
       )}
       {!showComments && commentsCount && (
         <p
-          className="text-likes text-comments m-pointer"
+          className="text-likes text-comments m-pointer p-l-r-10 grey"
           onClick={() => handlePostPageRedirect()}
         >
           View all {commentsCount} comment(s)
         </p>
       )}
-      {showComments && "Comments here"}
+      {showComments && comments && (
+        <section className="comment-section">
+          {comments.map((comment) => (
+            <CommentCard commentData={comment} />
+          ))}
+        </section>
+      )}
+      <section className="w-100 p-0-0-10-10 grey">4 hours ago</section>
     </div>
   );
 };
