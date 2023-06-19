@@ -91,6 +91,10 @@ body{
     display: flex;
     flex-direction: row;
 }
+.flex-center{
+    align-items: center;
+    justify-content: center;
+}
 .sp-bw{
     justify-content: space-between;
 }
@@ -143,7 +147,9 @@ input::placeholder{
 .w-100{
     width: 100%;
 }
-
+.max-width-100{
+    
+}
 /* mouses */
 .m-pointer{
     cursor: pointer;

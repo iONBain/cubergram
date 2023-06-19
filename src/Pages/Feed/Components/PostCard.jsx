@@ -11,7 +11,8 @@ const PostCard = ({ postData, showComments }) => {
     _id: postID,
     username,
     imageURL,
-    content,
+    caption,
+    textPost,
     likes: { likeCount },
     comments,
   } = postData && postData;
@@ -36,24 +37,25 @@ const PostCard = ({ postData, showComments }) => {
   return (
     <div className="flex-col main-post-card">
       {/* header */}
-      <p className="border-bottom post-user-header flex-row sp-bw p-10">
-        <Link to={`/profile/${userID}`} className="text-deco-none">
-          {/* <img src="" alt="" /> */}
-          {userAvatar}
-          {username}
+      <p className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-10">
+        <Link to={`/profile/${userID}`} className="text-deco-none flex-row flex-center gap-8">
+          <img src={userAvatar} className="user-avatar-img" alt="" />
+          
+          <p>
+            {username}
+            </p>
           {/* {userID} */}
         </Link>
         <FiMoreVertical className="m-pointer" />
       </p>
-      {!imageURL && (
+      {textPost ? (
         <p
           className="post-content p-10 text-justify m-pointer"
           onClick={() => handlePostPageRedirect()}
         >
-          {" "}
-          <span className="f-bold accent"> {username} </span> {content}
+          {textPost}
         </p>
-      )}
+      ): ""}
       {/* image of post */}
       {imageURL && (
         <img
@@ -88,7 +90,7 @@ const PostCard = ({ postData, showComments }) => {
           onClick={() => handlePostPageRedirect()}
         >
           {" "}
-          <span className="f-bold accent"> {username} </span> {content}
+          <span className="f-bold accent"> {username} </span> {caption}
         </p>
       )}
       {!showComments && commentsCount && (

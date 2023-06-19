@@ -9,10 +9,9 @@ const Feed = () => {
   console.log(posts, "from feed");
   return (
     !loader && (
-      <div className="flex-col gap-16">
+      <section className="flex-col flex-center gap-16">
         {posts && posts.map((post) => <PostCard postData={post} />)}
-        {/* This is Feed */}
-      </div>
+      </section>
     )
   );
 };
