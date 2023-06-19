@@ -1,0 +1,163 @@
+/* for all components */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* variables */
+:root {
+    --grey: grey;
+    --accent: rgb(26, 192, 82);
+    --black: rgb(17, 29, 39);
+    --white:rgb(242, 237, 255);
+}
+
+body{
+    color: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+.dark{
+    color: var(--white);
+    background-color: var(--black);
+
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    
+}
+::-webkit-scrollbar:hover{
+    cursor: pointer;
+}
+/* selection */
+::selection{
+    background-color: var(--accent);
+    color: var(--white);
+}
+
+.navLink{
+    text-decoration: none;
+    color: var(--shadowLightBlue);
+}
+
+.accent{
+    color: var(--accent);
+}
+.grey{
+    color: var(--grey);
+}
+.white{
+    color: var(--white);
+}
+.bg-white{
+    background-color: var(--white);
+}
+/* fonts */
+.f-bold{
+    font-weight: 600;
+}
+
+/* texts */
+.text-justify{
+    text-align: justify;
+}
+
+.text-deco-none{
+    text-decoration: none;
+    color: inherit;
+}
+/* utils */
+/* displays and layouts */
+.display-none{
+    display: none !important;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.sp-bw{
+    justify-content: space-between;
+}
+.gap-16{
+    gap: 1rem;
+}
+.gap-8{
+    gap: .5rem;
+}
+/* inputs */
+input[type="text"] ,input[type="password"]{
+    transition: all 0.2s ease-in;
+    outline: none;
+    border: 1px solid var(--grey);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+input[type="text"]:is(:hover,:focus),input[type="password"]:is(:hover,:focus) {
+    background-color: var(--accent);
+    color: var(--white);
+}
+input::placeholder{
+    color: var(--grey);
+}
+
+/* margins and padding */
+.m-top{
+    margin-top: 65px;
+    padding: 1rem;
+}
+.m-right-5{
+    margin-right: .5rem;
+}
+.p-10{
+    padding: 10px;
+}
+.p-6-10{
+    padding: 6px 10px;
+}
+.p-l-r-10{
+    padding: 0 10px;
+}
+.p-bot-0{
+    padding-bottom: 0;
+}
+.p-bot-10{
+    padding-bottom: 10px;
+}
+.w-100{
+    width: 100%;
+}
+
+/* mouses */
+.m-pointer{
+    cursor: pointer;
+}
+
+/* borders */
+.border-bottom{
+    border-bottom: 2px solid var(--grey);
+}
+.border-top{
+    border-top: 2px solid var(--grey);
+}
+
+/* buttons */
+.btn {
+    background-color: var(--accent);
+}
