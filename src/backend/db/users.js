@@ -16,6 +16,7 @@ export const users = [
     bio:"make it happen!",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -27,6 +28,7 @@ export const users = [
     bio:"be kind, be adarsh",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -38,6 +40,7 @@ export const users = [
     bio:"scholar by day,coder by night",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -49,6 +52,7 @@ export const users = [
     bio:"being the mentor I never had",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: [],
   },
   {
     _id: uuid(),
@@ -61,5 +65,6 @@ export const users = [
     // website:"",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bookmarks: [],
   },
 ];

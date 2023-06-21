@@ -20,7 +20,7 @@ const Login = () => {
             console.error(e)
         }
     }
-    useEffect(()=> console.log(token), [token])
+    useEffect(()=> console.log("token",token), [token])
     return (
         <div>
             <button onClick={handleTestUser}>Test User</button>

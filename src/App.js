@@ -10,8 +10,9 @@ import Footer from "./Components/Footer";
 import Loader from "./Components/Loader/Loader";
 import UserProfile from "./Pages/UserProfile";
 import PostPage from "./Pages/PostPage";
+import BookmarkedPosts from "./Pages/BookmarkedPosts";
 import { useEffect } from "react";
-import { getPosts, getUsers } from "./services/initialData";
+import { getPosts, getUsers } from "./services/getData";
 import LeftNav from "./Components/LeftNav";
 import RightNav from "./Components/RightNav";
 import "./App.css"
@@ -36,7 +37,7 @@ const App = () => {
       <section className={`main-loader ${!loader && "display-none"}`}>
       <Loader/>
       </section>
-      <section className="m-top main-app-section">
+      <section className="m-top main-app-section ">
         {/* <LeftNav className="main-left-nav"/> */}
       <Routes>
         <Route path="/mm" element={<Mockman/>} />
@@ -44,11 +45,12 @@ const App = () => {
         <Route path="/" element={<Feed />} />
         <Route path="/profile/:userID" element={<UserProfile />} />
         <Route path="/posts/:postID" element={<PostPage />} />
+        <Route path="bookmark" element={<BookmarkedPosts/>}/>
         {/* <Route path="/login" element={<Feed />} /> */}
       </Routes>
       {/* <RightNav className="main-right-nav"/> */}
       </section>
-      <Footer/>
+      <Footer />
       <BottomNav/>
     </div>
   );

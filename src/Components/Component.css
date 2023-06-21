@@ -36,7 +36,12 @@
     top: 50px;
     padding: 5px;
     text-align: center;
-    background-color: var(--accent);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: var(--accent); */
+    border: 2px solid var(--accent);
     border-radius: 5px;
 
 }
@@ -58,7 +63,25 @@
 
 
 
+/* bottom nav */
+.bottom-nav-main{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 45px;
+    border-bottom: 2px solid var(--grey);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    color: var(--accent);
+    /* background-color: rgba(236, 236, 236, 0.22); */
+}
+
 /* footer */
 .main-footer{
     background-color: red;
 }
+
+

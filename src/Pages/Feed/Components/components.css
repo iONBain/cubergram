@@ -14,7 +14,9 @@
 
  .main-post-img {
     margin: 0 auto;
-    min-width: 30%;
+    /* min-width: 30%;
+    max-width: 100%; */
+    width: 80%;
     /* max-height: 20%; */
     object-fit: contain;
 }
@@ -45,3 +47,11 @@
     padding-left: .5rem;
     padding-bottom: .5rem;
  }
+
+
+ @media only screen and (min-width: 600px) {
+    .main-post-card {
+      /* max-width: 50vw; */
+      /* background-color: red; */
+    }
+  }

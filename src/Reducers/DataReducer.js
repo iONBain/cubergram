@@ -3,7 +3,8 @@ export const initialState = {
     posts: [],
     users: [],
     loader: false,
-
+    bookmarks:[],
+    likedPosts:[],
     searchedUser:"",
     theme:"dark"
   };
@@ -39,6 +40,16 @@ export const initialState = {
         return {
           ...state,
           loader: action.payload
+        }
+      case actionTypes.SET_BOOKMARKS:
+        return {
+          ...state,
+          bookmarks: [...action.payload]
+        }
+      case actionTypes.SET_LIKED_POSTS:
+        return {
+          ...state,
+          likedPosts: action.payload
         }
     default:
         throw new Error("Error in reducer");

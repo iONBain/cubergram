@@ -1,45 +1,89 @@
-import { useContext, useEffect, useState } from "react"
-import { DataContext } from "../Contexts/DataContext"
-import actionTypes from "../backend/utils/commands"
-import "./Component.css"
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../Contexts/DataContext";
+import actionTypes from "../backend/utils/commands";
+import "./Component.css";
+import { Link } from "react-router-dom";
+
+const FoundUserCard = ({ users, username }) => {
+  const {
+    avatar: userAvatar,
+    _id: userID,
+    firstname,
+    lastname,
+  } = users.find(
+    ({ username: un }) => un.toLowerCase() === username.toLowerCase()
+  );
+  return (
+    <div>
+      <section className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-10">
+        <Link
+          to={`/profile/${userID}`}
+          className="text-deco-none flex-row flex-center gap-8"
+        >
+          <img src={userAvatar} className="user-avatar-img" alt="" />
+          <section className="flex-col flex-left">
+            <p className="f-bold">
+              <span className="accent"> {firstname}</span> {lastname}
+            </p>
+            <p className="f-smaller grey">{username}</p>
+          </section>
+        </Link>
+      </section>
+    </div>
+  );
+};
 
 const SearchBar = () => {
-    const {data:{searchedUser,users},dataDispatch} = useContext(DataContext)
-    const [showSuggestions,setShowSuggestions] = useState(false)
-    const foundUserList = users.filter(({username,firstname,lastname})=> 
-    username.toLowerCase().includes(searchedUser.toLowerCase()) || 
-    firstname.toLowerCase().includes(searchedUser.toLowerCase()) || 
-    lastname.toLowerCase().includes(searchedUser.toLowerCase()) 
-    )
+  const {
+    data: { searchedUser, users, theme },
+    dataDispatch,
+  } = useContext(DataContext);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const foundUserList = users.filter(
+    ({ username, firstname, lastname }) =>
+      username.toLowerCase().includes(searchedUser.toLowerCase()) ||
+      firstname.toLowerCase().includes(searchedUser.toLowerCase()) ||
+      lastname.toLowerCase().includes(searchedUser.toLowerCase())
+  );
 
-    
-    const handleSearch = (e) => {
-        dataDispatch({
-            type:actionTypes.SET_SEARCHEDUSER,
-            payload:e.target.value
-        })
-
+  const handleSearch = (e) => {
+    dataDispatch({
+      type: actionTypes.SET_SEARCHEDUSER,
+      payload: e.target.value,
+    });
+  };
+  useEffect(() => {
+    if (searchedUser.length !== 0) {
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
     }
-    useEffect(()=>{
-        if(searchedUser.length!==0){
-            setShowSuggestions(true)
-        }else{
-            setShowSuggestions(false)
-        }
-    },[searchedUser])
+  }, [searchedUser]);
 
-    // main render return
-    return (
-        <section className="search-main">
-            <input type="text" placeholder="Search user ..." value={searchedUser} onInput={handleSearch} />
-            <section className={`search-suggestions ${!showSuggestions && "display-none"}`}>
-               {
-                foundUserList.length===0 ? "No user(s) found!" : foundUserList.map(({username})=> `user: ${username}`)
-               }
-            </section>
-        </section>
-    )
-}
+  // main render return
+  return (
+    <section className="search-main">
+      <input
+        type="text"
+        placeholder="Search user ..."
+        value={searchedUser}
+        onInput={handleSearch}
+      />
+      <section
+        className={`search-suggestions ${!showSuggestions && "display-none"}  ${
+          theme === "dark" ? "dark" : "bg-white"
+        }`}
+      >
+        {foundUserList.length === 0 ? (
+          <p className="flex-col flex-center ">No user(s) found!</p>
+        ) : (
+          foundUserList.map(({ username }) => (
+            <FoundUserCard username={username} users={users} key={username} />
+          ))
+        )}
+      </section>
+    </section>
+  );
+};
 
-
-export default SearchBar
+export default SearchBar;

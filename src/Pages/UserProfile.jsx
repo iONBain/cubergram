@@ -4,7 +4,7 @@ import "./Pages.css"
 const UserProfile = () => {
     const {userID} = useParams()
     return (
-        <div className="main-user-profile">
+        <div className="main-user-profile flex-col">
             
             user id {userID}
         </div>

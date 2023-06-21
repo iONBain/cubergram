@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getSinglePost } from "../services/postTxn";
+import { getSinglePost } from "../services/getData";
 import { useState } from "react";
-import axios from "axios";
 import PostCard from "./Feed/Components/PostCard";
 
 const PostPage = () => {
   const { postID } = useParams();
   const [post, setPost] = useState();
-  //   const fetchSinglePost = async await getSinglePost(postID)
   useEffect(() => {
     (async () => {
       try {

@@ -31,5 +31,33 @@ const getUsers = async (dispatch) => {
 }
 
 
+// return single post
+const getSinglePost = async (id) => {
+    const {data:{post},status} = await axios.get(`/api/posts/${id}`)
+    if(status===200){
+        return post
+    }
+}
 
-export {getPosts,getUsers}
+//return list of bookmarks
+const getUserBookmarkedPosts = async (token,dispatch) => {
+    try{
+
+        const {data:{bookmarks},status} = await axios.get(`/api/users/bookmark`, {headers: {authorization:token}})
+        if(status===200){
+            // return bookmarks
+            dispatch({
+                type: actionTypes.SET_BOOKMARKS,
+                payload: bookmarks
+            })
+        }
+    }
+    catch(e){
+        console.error(e)
+    }
+
+}
+
+
+
+export {getPosts,getUsers,getSinglePost,getUserBookmarkedPosts}

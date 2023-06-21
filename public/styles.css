@@ -71,6 +71,9 @@ body{
 .f-normal{
     font-weight: normal;
 }
+.f-smaller{
+    font-size: smaller;
+}
 
 /* texts */
 .text-justify{
@@ -98,6 +101,9 @@ body{
     align-items: center;
     justify-content: center;
 }
+.flex-left{
+    align-items: start;
+}
 .sp-bw{
     justify-content: space-between;
 }
@@ -111,14 +117,15 @@ body{
 input[type="text"] ,input[type="password"]{
     transition: all 0.2s ease-in;
     outline: none;
-    border: 1px solid var(--grey);
+    border: 2px solid var(--grey);
     padding: 5px;
     border-radius: 5px;
     font-weight: 600;
 }
 input[type="text"]:is(:hover,:focus),input[type="password"]:is(:hover,:focus) {
-    background-color: var(--accent);
-    color: var(--white);
+    border: 2px solid var(--accent);
+    /* background-color: var(--accent); */
+    color: var(--accent);
 }
 input::placeholder{
     color: var(--grey);
@@ -128,6 +135,9 @@ input::placeholder{
 .m-top{
     margin-top: 65px;
     padding: 1rem;
+}
+.m-bot{
+    margin-bottom: 45px !important;
 }
 .m-right-5{
     margin-right: .5rem;
@@ -150,12 +160,27 @@ input::placeholder{
 .w-100{
     width: 100%;
 }
+.h-100{
+    min-height: 100%;
+}
 .p-0-0-10-10{
     padding: 0 0 10px 10px;
 }
 /* mouses */
 .m-pointer{
     cursor: pointer;
+}
+
+/* fa icon */
+.fa-icon{
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
+.fa-icon:hover{
+    transform: scale(1.3);
+    transform-origin: center;
 }
 
 /* borders */
@@ -169,4 +194,14 @@ input::placeholder{
 /* buttons */
 .btn {
     background-color: var(--accent);
+}
+
+
+/* nav links */
+.nav-link{
+    text-decoration: none;
+
+}
+.selected{
+    border-bottom: 2px solid var(--accent);
 }
