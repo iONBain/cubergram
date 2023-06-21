@@ -24,7 +24,7 @@ export const posts = [
   {
     _id: uuid(),
     caption:"New Rubiks' Cube average World Record was set by the Chinese Yiheng Wang with 4.69 seconds at the Yong Jun KL Speedcubing 2023 championship on March 12. He is only 8 years old",  
-    imageURL:"https://res.cloudinary.com/dpbovnhfi/image/upload/v1686374323/samples/cUBergram/posts/p1_xzrge6.jpg",
+    imageURL:"https://res.cloudinary.com/ionbain/image/upload/v1686374323/samples/cUBergram/posts/p1_xzrge6.jpg",
     likes: {
       likeCount: 18,
       likedBy: [],
@@ -38,7 +38,7 @@ export const posts = [
     _id: uuid(),
     caption:
       "This year we celebrated Christmas with a Santa Claus Rubik's Cube shape mod, created with a 3D pen.",
-    imageURL:"https://res.cloudinary.com/dpbovnhfi/image/upload/v1686374323/samples/cUBergram/posts/p2_sltbgc.jpg",
+    imageURL:"https://res.cloudinary.com/ionbain/image/upload/v1686374323/samples/cUBergram/posts/p2_sltbgc.jpg",
     likes: {
       likeCount: 8,
       likedBy: [],
@@ -52,7 +52,7 @@ export const posts = [
     _id: uuid(),
     caption:
      "Just another Rubik's Cube solver, Cube-Solver.com is an online 2x2, 3x3, 4x4, 5x5 and other bigger NxNxN cube solver and simulator runs in your web browser.",
-    imageURL:"https://res.cloudinary.com/dpbovnhfi/image/upload/v1686374324/samples/cUBergram/posts/p3_qwss6m.jpg",
+    imageURL:"https://res.cloudinary.com/ionbain/image/upload/v1686374324/samples/cUBergram/posts/p3_qwss6m.jpg",
     likes: {
       likeCount: 22,
       likedBy: [],
@@ -109,7 +109,7 @@ export const posts = [
     {
       _id: uuid(),
       caption:"Nova Scotia teen Saul Hafting has bounced his way to victory after breaking the Guinness World Record for the most Rubik's cubes solved while on a pogo stick.",
-      imageURL: "https://res.cloudinary.com/dpbovnhfi/image/upload/v1686375141/samples/cUBergram/posts/p6_zaaaso.webp",
+      imageURL: "https://res.cloudinary.com/ionbain/image/upload/v1686375141/samples/cUBergram/posts/p6_zaaaso.webp",
       likes: {
         likeCount: 12,
         likedBy: [],
@@ -132,7 +132,7 @@ export const posts = [
     {
       _id: uuid(),
       caption:"Rubik's Cube has been bought by Toronto-based toymaker Spin Mister in a US$50-million acquisition after the company first announced its plan to make the purchase last fall.",
-      imageURL: "https://res.cloudinary.com/dpbovnhfi/image/upload/v1686375141/samples/cUBergram/posts/p7_czglei.webp",
+      imageURL: "https://res.cloudinary.com/ionbain/image/upload/v1686375141/samples/cUBergram/posts/p7_czglei.webp",
       likes: {
         likeCount: 12,
         likedBy: [],
@@ -155,7 +155,7 @@ export const posts = [
     {
       _id: uuid(),
       caption:"A teenage boy in China has broken a world record for the fastest time to solve three Rubik’s Cubes simultaneously with both hands and feet, according to a Guinness World Records (GWR) media handout released on Nov. 8 to coincide with GWR Day.",
-      imageURL: "https://res.cloudinary.com/dpbovnhfi/image/upload/v1686375141/samples/cUBergram/posts/p8_mddsnm.webp",
+      imageURL: "https://res.cloudinary.com/ionbain/image/upload/v1686375141/samples/cUBergram/posts/p8_mddsnm.webp",
       likes: {
         likeCount: 12,
         likedBy: [],
