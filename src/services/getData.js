@@ -1,5 +1,5 @@
 import axios from "axios"
-import actionTypes from "../backend/utils/commands"
+import actionTypes from "../utils/commands"
 
 const getPosts = async (dispatch) => {
     try{
@@ -57,7 +57,22 @@ const getUserBookmarkedPosts = async (token,dispatch) => {
     }
 
 }
+const getSingleUserPosts = async (username) => {
+    try{
+        console.log(username)
+        const {data:{posts},status} = await axios.get(`/api/posts/user/${username}`)
+        const ress = await axios.get(`/api/posts/user/${username}`)
+        console.log(ress)
+        if(status===200){
+            return posts
+        }
+    }
+    catch(e){
+        console.error(e)
+    }
+
+}
 
 
 
-export {getPosts,getUsers,getSinglePost,getUserBookmarkedPosts}
+export {getPosts,getUsers,getSinglePost,getUserBookmarkedPosts,getSingleUserPosts}

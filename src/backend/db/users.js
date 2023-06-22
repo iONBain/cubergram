@@ -31,7 +31,8 @@ export const users = [
     bookmarks: [],
   },
   {
-    _id: uuid(),
+    // _id: uuid(),
+    _id: "f353faa0-b0a1-4004-b830-df70c8963956",
     avatar:"https://res.cloudinary.com/ionbain/image/upload/v1686804699/samples/cUBergram/avatars/woman_2_rfmoqt.png",
     firstname: "neo",
     lastname: "Grammer",

@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { DataContext } from "./Contexts/DataContext";
 import Footer from "./Components/Footer";
 import Loader from "./Components/Loader/Loader";
-import UserProfile from "./Pages/UserProfile";
+import UserProfile from "./Pages/UserProfile/UserProfile";
 import PostPage from "./Pages/PostPage";
 import BookmarkedPosts from "./Pages/BookmarkedPosts";
 import { useEffect } from "react";
@@ -18,6 +18,8 @@ import RightNav from "./Components/RightNav";
 import "./App.css"
 import Login from "./Pages/Login";
 import BottomNav from "./Components/BottomNav";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
  
@@ -33,6 +35,7 @@ const App = () => {
   return (
     <div className={`App ${theme==="dark" && "dark" }`}>
       <ScrollToTop/>
+      <ToastContainer/>
       <Header/>
       <section className={`main-loader ${!loader && "display-none"}`}>
       <Loader/>

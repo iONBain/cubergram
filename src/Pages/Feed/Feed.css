@@ -1,0 +1,9 @@
+.main-feed{
+    margin: 0 auto;
+}
+
+@media  (min-width: 600px) {
+    .main-feed {
+      max-width: 50vw;
+    }
+  }

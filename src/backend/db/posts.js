@@ -17,7 +17,7 @@ export const posts = [
         comment:"That's amazing speed, keep it down :)"
       }
     ],
-    username: "adarshbalika",
+    username: "neoGrammer",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../Contexts/DataContext";
-import actionTypes from "../backend/utils/commands";
 import "./Component.css";
-import { Link } from "react-router-dom";
+import actionTypes from "../utils/commands";
+import { Link, useLocation } from "react-router-dom";
 
 const FoundUserCard = ({ users, username }) => {
   const {
@@ -34,11 +34,15 @@ const FoundUserCard = ({ users, username }) => {
 };
 
 const SearchBar = () => {
+  // using context
   const {
     data: { searchedUser, users, theme },
     dataDispatch,
   } = useContext(DataContext);
+
+  // init variables
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const location = useLocation()
   const foundUserList = users.filter(
     ({ username, firstname, lastname }) =>
       username.toLowerCase().includes(searchedUser.toLowerCase()) ||
@@ -46,12 +50,17 @@ const SearchBar = () => {
       lastname.toLowerCase().includes(searchedUser.toLowerCase())
   );
 
+
+  // handler functions
   const handleSearch = (e) => {
     dataDispatch({
       type: actionTypes.SET_SEARCHEDUSER,
       payload: e.target.value,
     });
   };
+
+
+  // callbacks using useEffect
   useEffect(() => {
     if (searchedUser.length !== 0) {
       setShowSuggestions(true);
@@ -59,6 +68,15 @@ const SearchBar = () => {
       setShowSuggestions(false);
     }
   }, [searchedUser]);
+  useEffect(() => {
+    
+      setShowSuggestions(false);
+      dataDispatch({
+        type: actionTypes.SET_SEARCHEDUSER,
+        payload: "",
+      });
+  }, [location]);
+
 
   // main render return
   return (

@@ -1,4 +1,4 @@
-import actionTypes from "../backend/utils/commands";
+import actionTypes from "../utils/commands";
 export const initialState = {
     posts: [],
     users: [],
@@ -6,7 +6,8 @@ export const initialState = {
     bookmarks:[],
     likedPosts:[],
     searchedUser:"",
-    theme:"dark"
+    theme:"dark",
+    // singleUser:{}
   };
   
   export function dataReducer(state, action) {
@@ -51,6 +52,11 @@ export const initialState = {
           ...state,
           likedPosts: action.payload
         }
+      // case actionTypes.SET_SINGLE_USER:
+      //   return {
+      //     ...state,
+      //     singleUser: action.payload
+      //   }
     default:
         throw new Error("Error in reducer");
     }

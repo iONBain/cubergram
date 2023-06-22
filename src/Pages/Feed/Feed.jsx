@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DataContext } from "../../index";
 import PostCard from "./Components/PostCard";
-
+import "./Feed.css"
 const Feed = () => {
   const {
     data: { posts, loader },

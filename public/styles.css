@@ -104,6 +104,9 @@ body{
 .flex-left{
     align-items: start;
 }
+.flex-grow{
+    flex-grow: 1;
+}
 .sp-bw{
     justify-content: space-between;
 }

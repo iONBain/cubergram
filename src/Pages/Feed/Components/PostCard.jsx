@@ -1,17 +1,20 @@
 import { useContext } from "react";
-import { FaBookmark, FaComment, FaHeart } from "react-icons/fa";
-import { FiMoreVertical } from "react-icons/fi";
 import { DataContext } from "../../../Contexts/DataContext";
+import { AuthContext } from "../../../Contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import CommentCard from "./CommentCard";
 import {
   actionPostBookmark,
+  actionPostDelete,
   actionPostDislike,
   actionPostLike,
   actionPostUnbookmark,
 } from "../../../services/postTxn";
+import { ToastHandler } from "../../../utils/utils";
+import { FaBookmark, FaComment, FaHeart } from "react-icons/fa";
+import { FiMoreVertical } from "react-icons/fi";
 import "./components.css";
-import CommentCard from "./CommentCard";
-import { AuthContext } from "../../../Contexts/AuthContext";
+import { useState } from "react";
 
 const PostCard = ({ postData, showComments }) => {
   const {
@@ -24,7 +27,7 @@ const PostCard = ({ postData, showComments }) => {
     comments,
   } = postData && postData;
   const {
-    data: { users, bookmarks, posts },
+    data: { users, bookmarks, posts,theme },
     dataDispatch,
   } = useContext(DataContext);
   const {user} = useContext(AuthContext)
@@ -41,26 +44,44 @@ const PostCard = ({ postData, showComments }) => {
   const commentsCount = comments?.length;
 
   const navigate = useNavigate();
+  const [showOptions, setShowOptions] = useState(false);
   const handlePostPageRedirect = () => {
     navigate(`/posts/${postID}`);
   };
+  
+  // function for header 
+  const handleShowOptions = () => {
+    setShowOptions(prev => !prev)
+  }
 
   // functions for post actions
   const handleBookmark = async () => {
     if (isPostBookmarked) {
       await actionPostUnbookmark(postID, token, dataDispatch);
+      ToastHandler("info", `Unsaved ${foundPost.username}'s post`);
     } else {
       await actionPostBookmark(postID, token, dataDispatch);
+      ToastHandler("success", `Saved ${foundPost.username}'s post`);
     }
   };
   const handleLike = async (id, token, dataDispatch) => {
     if(isPostLiked){
       await actionPostDislike(id, token, dataDispatch);
+      ToastHandler("default", `🤍 Removed like from ${foundPost.username}'s post`);
     }else{
       await actionPostLike(id, token, dataDispatch);
+      ToastHandler("default", `💚 Liked ${foundPost.username}'s post`);
     }
   };
+  
+  const handleEditPost = () =>{
+    
+  }
+  const handleDeletePost = async () =>{
+    await actionPostDelete(postID,token,dataDispatch)
+  }
 
+  // main render paint
   return (
     <div className="flex-col main-post-card">
       {/* header */}
@@ -73,10 +94,21 @@ const PostCard = ({ postData, showComments }) => {
 
           <p>{username} {isPostLiked}</p>
         </Link>
-        <p></p>
-        <FiMoreVertical className="m-pointer" />
+        <p className={`show-options-main ${username!==user.username && "display-none"} ` } onBlur={handleShowOptions} >
+
+        <FiMoreVertical className={`m-pointer`} onClick={handleShowOptions} />
+        <section
+        className={`show-options-box ${!showOptions && "display-none"}  ${
+          theme === "dark" ? "dark" : "bg-white"
+        }`}
+      >
+       <p className="m-pointer" onClick={handleEditPost}>Edit</p>
+       <p className="m-pointer" onClick={handleDeletePost}>Delete</p>
+      </section>
+        </p>
       </div>
 
+      {/* textual post of a user */}
       {textPost ? (
         <p
           className="post-content p-10 text-justify m-pointer"
@@ -118,7 +150,7 @@ const PostCard = ({ postData, showComments }) => {
       {/* post likes */}
       <p className="p-l-r-10 text-likes">{likeCount} Likes</p>
 
-      {/* user-content */}
+      {/* user-caption */}
       {caption && (
         <p
           className="post-content p-10 text-justify m-pointer"
@@ -128,6 +160,8 @@ const PostCard = ({ postData, showComments }) => {
           <span className="f-bold accent"> {username} </span> {caption}
         </p>
       )}
+
+      {/* comment section */}
       {!showComments && commentsCount && (
         <p
           className="text-likes text-comments m-pointer p-l-r-10 grey"
@@ -136,6 +170,7 @@ const PostCard = ({ postData, showComments }) => {
           View all {commentsCount} comment(s)
         </p>
       )}
+      {/* all comments */}
       {showComments && comments && (
         <section className="comment-section">
           {comments.map((comment) => (

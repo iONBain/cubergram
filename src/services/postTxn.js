@@ -1,5 +1,5 @@
 import axios from "axios"
-import actionTypes from "../backend/utils/commands";
+import actionTypes from "../utils/commands";
 
 // like and dislike
 const actionPostLike = async (id,token,dispatch) => {
@@ -63,7 +63,6 @@ const actionPostBookmark = async (postId,token,dispatch) => {
 } 
 const actionPostUnbookmark = async (id,token,dispatch) => {
   try{
-
     const {data:{bookmarks},status} = await axios.post(`/api/users/remove-bookmark/${id}`,{}, {
       headers: {
               authorization: token,
@@ -80,7 +79,30 @@ const actionPostUnbookmark = async (id,token,dispatch) => {
         catch(e){
           console.error(e)
         }
-} 
+      } 
+      
+const actionPostDelete = async (id,token,dispatch) => {
+  try{
+    const {data:{posts},status} = await axios.delete(`/api/posts/${id}`, {
+      headers: {
+              authorization: token,
+            },
+          });
+          if(status===201){
+            // Toasthandler
+            dispatch({
+              type: actionTypes.INITIALIZE_POSTS,
+              payload: posts
+            })
+          }
+        }
+        catch(e){
+          console.error(e)
+        }
+
+}
 
 
-export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike}
+
+
+export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete}
