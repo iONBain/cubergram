@@ -7,13 +7,17 @@
 }
 
 .top-user-profile{
-    border-bottom: 2px solid var(--grey);
+    /* border-bottom: 2px solid var(--grey); */
     padding-bottom: 10px;
     
 }
 
 .profile-avatar-img{
     width: 4.5rem;
+}
+
+.btn-follow{
+    padding: .5rem;
 }
 
 @media  (min-width: 600px) {

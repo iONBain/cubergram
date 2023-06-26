@@ -61,6 +61,9 @@ body{
 .white{
     color: var(--white);
 }
+.black{
+    color: var(--black);
+}
 .bg-white{
     background-color: var(--white);
 }
@@ -176,7 +179,7 @@ input::placeholder{
 
 /* fa icon */
 .fa-icon{
-    color: var(--accent);
+    /* color: var(--accent); */
     cursor: pointer;
     transition: all 0.2s ease;
     transform: scale(1.1);
@@ -204,7 +207,9 @@ input::placeholder{
 .nav-link{
     text-decoration: none;
 
+
 }
 .selected{
-    border-bottom: 2px solid var(--accent);
+    /* border-bottom: 2px solid var(--accent); */
+    color: var(--accent);
 }

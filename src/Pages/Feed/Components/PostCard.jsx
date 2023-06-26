@@ -11,7 +11,7 @@ import {
   actionPostUnbookmark,
 } from "../../../services/postTxn";
 import { ToastHandler } from "../../../utils/utils";
-import { FaBookmark, FaComment, FaHeart } from "react-icons/fa";
+import { FaBookmark, FaComment, FaHeart, FaShareAlt } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
 import "./components.css";
 import { useState } from "react";
@@ -81,6 +81,13 @@ const PostCard = ({ postData, showComments }) => {
     await actionPostDelete(postID,token,dataDispatch)
   }
 
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(
+      `https://cubergram.netlify.app/posts/${postID}`
+    );
+    ToastHandler("success",`${foundPost.username}'s post link copied !`);
+  }
+
   // main render paint
   return (
     <div className="flex-col main-post-card">
@@ -94,7 +101,7 @@ const PostCard = ({ postData, showComments }) => {
 
           <p>{username} {isPostLiked}</p>
         </Link>
-        <p className={`show-options-main ${username!==user.username && "display-none"} ` } onBlur={handleShowOptions} >
+        <p className={`show-options-main ${username!==user?.username && "display-none"} ` } onBlur={handleShowOptions} >
 
         <FiMoreVertical className={`m-pointer`} onClick={handleShowOptions} />
         <section
@@ -138,6 +145,7 @@ const PostCard = ({ postData, showComments }) => {
             onClick={() => handleLike(postID, token, dataDispatch)}
           />
           <FaComment className="m-pointer" />
+          <FaShareAlt className="m-pointer" onClick={handleCopyToClipboard} />
         </p>
         <p>
           <FaBookmark

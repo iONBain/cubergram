@@ -8,31 +8,42 @@ import {
 } from "react-icons/fa";
 import { DataContext } from "../Contexts/DataContext";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthContext";
 
 const BottomNav = () => {
   const {
     data: { theme },
   } = useContext(DataContext);
- 
+ const {user} = useContext(AuthContext)
   return (
     <div
       className={`flex-row border-top ${
         theme === "dark" ? "dark" : "bg-white"
       } bottom-nav-main`}
     >
-      <NavLink to="/" className={({isActive})=> `nav-link ${isActive && "selected"}`}>
+      <NavLink to="/" className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
         <FaHome className="fa-icon m-pointer" />
       </NavLink>
-      <NavLink to="/explore" className={({isActive})=> `nav-link ${isActive && "selected"}`}>
+      <NavLink to="/explore" className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
         <FaCompass className="fa-icon m-pointer" />
       </NavLink>
-      <NavLink to="/addpost" className={({isActive})=> `nav-link ${isActive && "selected"}`}>
+      <NavLink to="/addpost" className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
         <FaPlusCircle className="fa-icon m-pointer" />
       </NavLink>
-      <NavLink to="/bookmark" className={({isActive})=> `nav-link ${isActive && "selected"}`}>
+      <NavLink to="/bookmark" className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
         <FaBookmark className="fa-icon m-pointer" />
       </NavLink>
-      <NavLink to="/profile" className={({isActive})=> `nav-link ${isActive && "selected"}`}>
+      <NavLink to={`/profile/${user._id}`} className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
         <FaUserCircle className="fa-icon m-pointer" />
       </NavLink>
     </div>

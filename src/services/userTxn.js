@@ -1,35 +1,40 @@
 import axios from "axios"
-import actionTypes from "../utils/commands"
 
 const followUser = async (userID,token) => {
-    const res = await axios.post(`/api/users/follow/${userID}`,{
-        headers: {
-            authorization: token,
-        }})
-    console.log(res)
+    try{
+
+        const res = await axios.post(`/api/users/follow/${userID}`,{},{
+            headers: {
+                authorization: token,
+            }})
+        return res.status
+    }
+    catch(e){
+            console.error(e)
+        }
 }
 
 const unFollowUser = async (userID,token) => {
-    const res = await axios.post(`/api/users/unfollow/${userID}`,{
-        headers: {
-            authorization: token,
-        }})
-    console.log(res)
-}
+    try{
 
+        const res = await axios.post(`/api/users/unfollow/${userID}`,{},{
+            headers: {
+                authorization: token,
+            }})
+            return res.status
+        }catch(e){
+        console.error(e)
+    }
+}
+        
 
 // specific user page txns
 const getSingleUser = async (userID) => {
     try{
         const {status,data:{user}} = await axios.get(`/api/users/${userID}`)
         if(status===200){
-            // dispatch({
-            //     type:actionTypes.SET_SINGLE_USER,
-            //     payload:user
-            // })
             return user
         }
-        // console.log(status,user)
     }
     catch(e){
         console.error(e)
