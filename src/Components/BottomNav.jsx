@@ -41,7 +41,7 @@ const BottomNav = () => {
       } ${isActive && "selected"}`}>
         <FaBookmark className="fa-icon m-pointer" />
       </NavLink>
-      <NavLink to={`/profile/${user._id}`} className={({isActive})=> `nav-link ${
+      <NavLink to={`/profile/${user?._id}`} className={({isActive})=> `nav-link ${
         theme === "dark" ? "white" : "black"
       } ${isActive && "selected"}`}>
         <FaUserCircle className="fa-icon m-pointer" />

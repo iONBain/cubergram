@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getSinglePost } from "../services/getData";
 import { useState } from "react";
 import PostCard from "./Feed/Components/PostCard";
+import "./Pages.css"
 
 const PostPage = () => {
   const { postID } = useParams();

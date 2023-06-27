@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import { useEffect } from "react";
-
+import "./Pages.css"
 const Login = () => {
     const { token, setToken, loginUser, signUpUser } = useContext(AuthContext);
   
@@ -22,8 +22,12 @@ const Login = () => {
     }
     useEffect(()=> console.log("token",token), [token])
     return (
-        <div>
-            <button onClick={handleTestUser}>Test User</button>
+        <div className="login-main m-top flex-col aic gap-16 ">
+            <img src="https://res.cloudinary.com/ionbain/image/upload/v1687836468/samples/cUBergram/assets/loginProfile_kweinv.jpg" width="150px" className="login-img" alt="" srcset="" />
+            <section className="login-box flex-col aic gap-8" >
+                Login here
+            <button onClick={handleTestUser} className="btn">Test User</button>
+            </section>
         </div>
     )
 }

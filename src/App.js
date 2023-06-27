@@ -20,12 +20,12 @@ import Login from "./Pages/Login";
 import BottomNav from "./Components/BottomNav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "./Contexts/AuthContext";
 
 const App = () => {
  
-
   const {data:{theme,loader},dataDispatch} = useContext(DataContext)
-
+  const {token} = useContext(AuthContext)
   useEffect(()=> {
     getUsers(dataDispatch);
     getPosts(dataDispatch);
@@ -36,6 +36,10 @@ const App = () => {
     <div className={`App ${theme==="dark" && "dark" }`}>
       <ScrollToTop/>
       <ToastContainer/>
+      
+      {token 
+      ? 
+      <>
       <Header/>
       <section className={`main-loader ${!loader && "display-none"}`}>
       <Loader/>
@@ -44,17 +48,24 @@ const App = () => {
         {/* <LeftNav className="main-left-nav"/> */}
       <Routes>
         <Route path="/mm" element={<Mockman/>} />
-        <Route path="/login" element={<Login/>} />
         <Route path="/" element={<Feed />} />
         <Route path="/profile/:userID" element={<UserProfile />} />
         <Route path="/posts/:postID" element={<PostPage />} />
-        <Route path="bookmark" element={<BookmarkedPosts/>}/>
-        {/* <Route path="/login" element={<Feed />} /> */}
+        <Route path="/bookmark" element={<BookmarkedPosts/>}/>
       </Routes>
       {/* <RightNav className="main-right-nav"/> */}
       </section>
       <Footer />
       <BottomNav/>
+      </>
+      : 
+      <>
+      <Header noSearch/>
+      <Routes>
+        <Route path="*" element={<Login/>} />     
+        </Routes>
+      </>
+      }
     </div>
   );
 }

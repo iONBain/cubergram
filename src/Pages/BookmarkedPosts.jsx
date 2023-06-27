@@ -1,19 +1,12 @@
 import PostCard from "./Feed/Components/PostCard";
-import { getUserBookmarkedPosts } from "../services/getData";
-import { useContext, useState } from "react";
-import { AuthContext } from "../Contexts/AuthContext";
-import { useEffect } from "react";
+import { useContext } from "react";
 import { DataContext } from "../Contexts/DataContext";
+import "./Pages.css"
 
 const BookmarkedPosts = () => {
   const {data:{posts,bookmarks}} = useContext(DataContext)
-  // const {token} = useContext(AuthContext)
-  // const getBMPosts = async () => {
-  //   await getUserBookmarkedPosts(token,dataDispatch);
-  // };
   const newBMPosts = posts.filter(({_id})=> bookmarks.includes(_id))
 
-  // useEffect(()=>()=>getBMPosts(),[])
   return bookmarks.length === 0 ? (
     "No bookmarks yet!"
   ) : (

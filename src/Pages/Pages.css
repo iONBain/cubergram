@@ -16,9 +16,39 @@
 .main-feed{
     margin: 0 auto;
 }
+.bookmarks-main{
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 1rem;
+    
+}
+
+/* login page */
+.login-main{
+    /* background-color: red; */
+    height: calc(100vh - 65px);
+}
+.login-img{
+    border-radius: 50%;
+}
+.login-box{
+    min-width: 35%;
+    padding: 1rem;
+    border-radius: 10px;
+    min-height: 250px;
+    border: 2px solid var(--accent);
+}
+
 
 @media  (min-width: 600px) {
     .main-feed {
       max-width: 50vw;
+    }
+    .bookmarks-main{
+        max-width: 50vw;
     }
   }

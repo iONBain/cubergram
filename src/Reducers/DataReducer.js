@@ -52,11 +52,7 @@ export const initialState = {
           ...state,
           likedPosts: action.payload
         }
-      // case actionTypes.SET_SINGLE_USER:
-      //   return {
-      //     ...state,
-      //     singleUser: action.payload
-      //   }
+      
     default:
         throw new Error("Error in reducer");
     }
