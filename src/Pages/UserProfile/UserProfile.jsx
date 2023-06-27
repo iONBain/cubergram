@@ -17,7 +17,7 @@ const UserProfile = () => {
   const [showUser, setShowUser] = useState({});
   const [showUserPosts, setShowUserPosts] = useState();
   const { avatar, followers, following } = showUser;
-  const { user, token } = useContext(AuthContext);
+  const { user, token,setToken } = useContext(AuthContext);
   const amIFollowing = followers?.some(
     ({ username: un }) => un === user.username
   );
@@ -42,15 +42,26 @@ const UserProfile = () => {
     getFoundUser();
   };
 
+  const handleEditProfile = () => {}
+
+  const handleLogout = () => {
+    setToken("")
+    localStorage.removeItem("login")
+    localStorage.removeItem("user")
+    ToastHandler("success","Logged out successfully :)")
+  };
+
   useEffect(() => {
     getUserPosts();
   }, [showUser]);
   useEffect(() => {
     getFoundUser();
   }, [userID]);
+
+  // main render
   return (
     <div className="main-user-profile flex-col">
-      <section className="user-stats-main flex-row sp-bw">
+      <section className="user-stats-main w-100 flex-row sp-bw">
         <img src={avatar} className="profile-avatar-img" alt="" />
         {/* <div className="flex-row sp-bw flex-grow"> */}
         <div className="flex-col gap-8 flex-center">
@@ -69,7 +80,7 @@ const UserProfile = () => {
         {/* <img src={avatar} className="user-avatar-img" alt="" /> */}
       </section>
       {/* details */}
-      <section className="flex-row border-bottom sp-bw">
+      <section className="flex-row border-bottom w-100 sp-bw">
         <section className="top-user-profile flex-column">
           <p className="accent f-bold">
             {showUser?.firstname} {showUser?.lastname}
@@ -77,14 +88,24 @@ const UserProfile = () => {
           <p className="grey f-smaller">{showUser?.username}</p>
           <p>{showUser?.bio}</p>
         </section>
-        {showUser.username !== user.username && (
+        {showUser.username !== user.username ? (
           <section>
-            <button className="btn-follow" onClick={handleFollow}>
+            <button className="btn btn-follow" onClick={handleFollow}>
               {" "}
               {amIFollowing ? "Unfollow" : "Follow"}
             </button>
           </section>
-        )}
+        ) : 
+          <section className="flex-row gap-16 aic">
+            <button className="btn btn-follow" onClick={handleEditProfile}>
+             Edit Profile
+            </button>
+            <button className="btn btn-follow" onClick={handleLogout}>
+             Logout
+            </button>
+          </section>
+        
+        }
       </section>
 
       {/* all posts */}

@@ -8,7 +8,12 @@ const BookmarkedPosts = () => {
   const newBMPosts = posts.filter(({_id})=> bookmarks.includes(_id))
 
   return bookmarks.length === 0 ? (
-    "No bookmarks yet!"
+    <section className="bookmarks-main">
+      <h2 className="text-gap-5">
+
+    No bookmarks yet!
+      </h2>
+    </section>
   ) : (
     <div className="bookmarks-main">
       {newBMPosts &&

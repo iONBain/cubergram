@@ -5,7 +5,9 @@
     width: 100%;
     min-height: 80vh;
 }
-
+.user-stats-main{
+    /* background-color: red; */
+}
 .top-user-profile{
     /* border-bottom: 2px solid var(--grey); */
     padding-bottom: 10px;
