@@ -55,6 +55,9 @@ body{
 .accent{
     color: var(--accent);
 }
+.bg-accent{
+    background-color: var(--accent);
+}
 .grey{
     color: var(--grey);
 }
@@ -122,6 +125,12 @@ body{
 .gap-8{
     gap: .5rem;
 }
+/* textarea */
+textarea{
+    border: none;
+    outline: none;
+    resize: none;
+}
 /* inputs */
 input[type="text"] ,input[type="password"]{
     transition: all 0.2s ease-in;
@@ -169,6 +178,9 @@ input::placeholder{
 .w-100{
     width: 100%;
 }
+.w-80{
+    width: 80%;
+}
 .w-30{
     width: 30%;
 }
@@ -187,6 +199,7 @@ input::placeholder{
 /* mouses */
 .m-pointer{
     cursor: pointer;
+    transition: all 0.4s ease   ;
 }
 
 /* fa icon */
@@ -208,7 +221,12 @@ input::placeholder{
 .border-top{
     border-top: 2px solid var(--grey);
 }
-
+.no-border{
+    border: none;
+}
+.bor-rad-5{
+    border-radius: .5rem;
+}
 /* buttons */
 .btn {
     background-color: var(--accent);
@@ -232,4 +250,11 @@ input::placeholder{
 .selected{
     /* border-bottom: 2px solid var(--accent); */
     color: var(--accent);
+}
+
+
+
+/* test */
+.bgcol{
+    background-color: red;
 }

@@ -86,7 +86,7 @@ const UserProfile = () => {
             {showUser?.firstname} {showUser?.lastname}
           </p>
           <p className="grey f-smaller">{showUser?.username}</p>
-          <p>{showUser?.bio}</p>
+          <p>{"> "}{showUser?.bio} {" <"}</p>
         </section>
         {showUser.username !== user.username ? (
           <section>

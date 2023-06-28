@@ -16,6 +16,7 @@ const BookmarkedPosts = () => {
     </section>
   ) : (
     <div className="bookmarks-main">
+      <h2 className="accent text-gap-5 border-bottom p-10">Saved Posts</h2>
       {newBMPosts &&
         newBMPosts.map((mark) => <PostCard postData={mark} key={mark._id} />)}
     </div>

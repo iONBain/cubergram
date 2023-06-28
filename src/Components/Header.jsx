@@ -6,7 +6,7 @@ import { FiLogOut } from "react-icons/fi";
 import { DataContext } from "../Contexts/DataContext";
 import actionTypes from "../utils/commands";
 import "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 import { ToastHandler } from "../utils/utils";
 const Header = ({ noSearch }) => {
@@ -34,6 +34,7 @@ const Header = ({ noSearch }) => {
   const handleNavHome = () => {
     nav("/");
   };
+  
   const handleLogout = () => {
     setToken("")
     localStorage.removeItem("login")
@@ -53,10 +54,14 @@ const Header = ({ noSearch }) => {
         alt="logo"
         className="m-pointer"
       />
-      {noSearch ? <section className="w-30 text-gap-5">cuberGram</section> : (
+      {noSearch ? <section className="w-30 text-gap-5 search-main">cuberGram</section> : (
         <>
           <SearchBar />
-          <FaHeart className="m-pointer" />
+          <NavLink to="/liked" className={({isActive})=> `nav-link ${
+        theme === "dark" ? "white" : "black"
+      } ${isActive && "selected"}`}>
+          <FaHeart className="fa-icon m-pointer" />
+      </NavLink>
           <FiLogOut className="m-pointer" onClick={handleLogout} />
         </>
       )}

@@ -80,7 +80,7 @@ const SearchBar = () => {
 
   // main render return
   return (
-    <section className="search-main">
+    <section className="search-main w-30">
       <input
         type="text"
         placeholder="Search user ..."

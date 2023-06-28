@@ -10,7 +10,7 @@ import {
   actionPostLike,
   actionPostUnbookmark,
 } from "../../../services/postTxn";
-import { ToastHandler } from "../../../utils/utils";
+import { ToastHandler, calculateElapsedTime } from "../../../utils/utils";
 import { FaBookmark, FaComment, FaHeart, FaShareAlt } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
 import "./components.css";
@@ -23,6 +23,7 @@ const PostCard = ({ postData, showComments }) => {
     imageURL,
     caption,
     textPost,
+    createdAt,
     likes: { likeCount },
     comments,
   } = postData && postData;
@@ -33,6 +34,7 @@ const PostCard = ({ postData, showComments }) => {
   const {user} = useContext(AuthContext)
   const foundPost = posts.find(({_id:i})=>i===postID)
   const {likes: { likedBy}} = foundPost
+  const elapsedTime = calculateElapsedTime(createdAt)
   const { token } = useContext(AuthContext);
 
   const { avatar: userAvatar, _id: userID } = users.find(
@@ -186,7 +188,7 @@ const PostCard = ({ postData, showComments }) => {
           ))}
         </section>
       )}
-      <section className="w-100 p-0-0-10-10 grey">4 hours ago</section>
+      <section className="w-100 p-0-0-10-10 grey">{elapsedTime}</section>
     </div>
   );
 };

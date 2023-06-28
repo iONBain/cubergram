@@ -7,7 +7,8 @@
 }
 
 .user-avatar-img{
-    width: 2.5rem
+    width: 2.5rem;
+    aspect-ratio: 1/1;
 }
 
  .main-post-img {
@@ -44,4 +45,12 @@
     /* background-color: var(--accent); */
     border: 2px solid var(--accent);
     border-radius: 5px;
+}
+
+
+/* new post card */
+.new-post-area-main{
+    flex-grow: 1;
+    font: inherit;
+    color: var(--accent);
 }

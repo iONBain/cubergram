@@ -21,6 +21,7 @@ const PostPage = () => {
   useEffect(() => console.log(post, "post here"), [post]);
   return (
     <div className="main-post-page">
+      
       {post && <PostCard postData={post} showComments={true} />}
     </div>
   );

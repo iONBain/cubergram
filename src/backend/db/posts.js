@@ -15,8 +15,8 @@ export const posts = [
           }
       ],
       "username": "neoGrammer",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-04-26T11:17:53+05:30",
+      "updatedAt": "2023-04-26T11:17:53+05:30",
       "id": "1"
   },
   {
@@ -29,8 +29,8 @@ export const posts = [
           "dislikedBy": []
       },
       "username": "iONBain",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-01-26T11:17:53+05:30",
+      "updatedAt": "2023-01-26T11:17:53+05:30",
       "id": "2"
   },
   {
@@ -43,8 +43,8 @@ export const posts = [
           "dislikedBy": []
       },
       "username": "iONBain",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-06-16T11:17:53+05:30",
+      "updatedAt": "2023-06-16T11:17:53+05:30",
       "id": "3"
   },
   {
@@ -57,8 +57,8 @@ export const posts = [
           "dislikedBy": []
       },
       "username": "iONBain",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-02-20T11:17:53+05:30",
+      "updatedAt": "2023-02-20T11:17:53+05:30",
       "id": "4"
   },
   {
@@ -80,8 +80,8 @@ export const posts = [
           }
       ],
       "username": "iONBain",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-06-06T11:17:53+05:30",
+      "updatedAt": "2023-06-06T11:17:53+05:30",
       "id": "5"
   },
   {
@@ -103,8 +103,8 @@ export const posts = [
           }
       ],
       "username": "tanayBhaiya",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-05-25T11:17:53+05:30",
+      "updatedAt": "2023-05-25T11:17:53+05:30",
       "id": "6"
   },
   {
@@ -127,8 +127,8 @@ export const posts = [
           }
       ],
       "username": "himanshuPatel",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-06-24T11:17:53+05:30",
+      "updatedAt": "2023-06-24T11:17:53+05:30",
       "id": "7"
   },
   {
@@ -151,8 +151,8 @@ export const posts = [
           }
       ],
       "username": "himanshuPatel",
-      "createdAt": "2023-06-26T11:17:53+05:30",
-      "updatedAt": "2023-06-26T11:17:53+05:30",
+      "createdAt": "2023-06-22T11:17:53+05:30",
+      "updatedAt": "2023-06-22T11:17:53+05:30",
       "id": "8"
   },
   {

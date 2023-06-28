@@ -7,6 +7,7 @@ export const initialState = {
     likedPosts:[],
     searchedUser:"",
     theme:"dark",
+    sortBy:"like",
     // singleUser:{}
   };
   
@@ -47,10 +48,10 @@ export const initialState = {
           ...state,
           bookmarks: [...action.payload]
         }
-      case actionTypes.SET_LIKED_POSTS:
+      case actionTypes.SET_SORT:
         return {
           ...state,
-          likedPosts: action.payload
+          sortBy: action.payload
         }
       
     default:

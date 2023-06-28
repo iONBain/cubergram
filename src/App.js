@@ -21,6 +21,7 @@ import BottomNav from "./Components/BottomNav";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "./Contexts/AuthContext";
+import LikedPosts from "./Pages/LikedPosts";
 
 const App = () => {
  
@@ -36,7 +37,7 @@ const App = () => {
     <div className={`App ${theme==="dark" && "dark" }`}>
       <ScrollToTop/>
       <ToastContainer/>
-      
+
       {token 
       ? 
       <>
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/profile/:userID" element={<UserProfile />} />
         <Route path="/posts/:postID" element={<PostPage />} />
         <Route path="/bookmark" element={<BookmarkedPosts/>}/>
+        <Route path="/liked" element={<LikedPosts/>}/>
       </Routes>
       {/* <RightNav className="main-right-nav"/> */}
       </section>
