@@ -99,10 +99,29 @@ const actionPostDelete = async (id,token,dispatch) => {
         catch(e){
           console.error(e)
         }
+}
 
+
+const actionPostAdd = async (postData, token,dispatch) => {
+  try{
+    const {data:{posts},status} = await axios.post("/api/posts", { postData:postData }, { headers: { authorization:token } });
+    // const res = axios.post("/api/posts", { postData }, { headers: { authorization:token } });
+   
+          if(status===201){
+            // Toasthandler
+            dispatch({
+              type: actionTypes.INITIALIZE_POSTS,
+              payload: posts
+            })
+          }
+        // console.log(res)
+  }
+        catch(e){
+          console.error(e)
+        }
 }
 
 
 
 
-export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete}
+export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete,actionPostAdd}

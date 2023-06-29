@@ -54,6 +54,11 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
+      
+      // pass the cloudinary api calls
+      this.passthrough('/v1_1/**');
+      this.passthrough("https://api.cloudinary.com/v1_1/ionbain/image/upload");
+      
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));

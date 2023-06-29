@@ -94,4 +94,13 @@ const calculateElapsedTime = (dateString) => {
   const elapsedYears = Math.floor(elapsedMonths / 12);
   return `${elapsedYears} year${elapsedYears !== 1 ? 's' : ''} ago`;
 }
-export {ToastHandler,calculateElapsedTime}
+
+const  trimAndMaintainFormat = (fileName) => {
+  const extensionIndex = fileName.lastIndexOf('.');
+  const fileNameWithoutExtension = fileName.substring(0, extensionIndex);
+  const trimmedString = fileNameWithoutExtension.length > 5 ? fileNameWithoutExtension.slice(0, 5) + "..." : fileNameWithoutExtension;
+  const fileFormat = fileName.substring(extensionIndex + 1).toLowerCase();
+  return trimmedString + "." + fileFormat;
+}
+
+export {ToastHandler,calculateElapsedTime,trimAndMaintainFormat}
