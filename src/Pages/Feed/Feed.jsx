@@ -4,14 +4,17 @@ import PostCard from "./Components/PostCard";
 import NewPostCard from "./Components/NewPostCard";
 import "./Feed.css";
 import SortByHeader from "./Components/SortByHeader";
+import { AuthContext } from "../../Contexts/AuthContext";
 const Feed = () => {
   const {
     data: { posts, loader, sortBy },
   } = useContext(DataContext);
+  const {user} = useContext(AuthContext)
+  const filteredUserPosts = posts.filter(({username})=> username===user.username)
   const sortedPosts =
     sortBy === "like"
-      ? [...posts].sort((a, b) => b.likes.likeCount - a.likes.likeCount)
-      : [...posts].sort((a, b) => {
+      ? [...filteredUserPosts].sort((a, b) => b.likes.likeCount - a.likes.likeCount)
+      : [...filteredUserPosts].sort((a, b) => {
           const dateA = new Date(a.createdAt);
           const dateB = new Date(b.createdAt);
           return dateB - dateA;

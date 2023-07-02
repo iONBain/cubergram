@@ -19,7 +19,7 @@ const BottomNav = () => {
     <div
       className={`flex-row border-top ${
         theme === "dark" ? "dark" : "bg-white"
-      } bottom-nav-main`}
+      } bottom-nav-main `}
     >
       <NavLink to="/" className={({isActive})=> `nav-link ${
         theme === "dark" ? "white" : "black"

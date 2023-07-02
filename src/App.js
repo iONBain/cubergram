@@ -22,6 +22,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "./Contexts/AuthContext";
 import LikedPosts from "./Pages/LikedPosts";
+import ExplorePosts from "./Pages/ExplorePosts";
 
 const App = () => {
  
@@ -46,16 +47,17 @@ const App = () => {
       <Loader/>
       </section>
       <section className="m-top main-app-section ">
-        {/* <LeftNav className="main-left-nav"/> */}
+        <LeftNav className="main-left-nav"/>
       <Routes>
         <Route path="/mm" element={<Mockman/>} />
         <Route path="/" element={<Feed />} />
+        <Route path="/explore" element={<ExplorePosts />} />
         <Route path="/profile/:userID" element={<UserProfile />} />
         <Route path="/posts/:postID" element={<PostPage />} />
         <Route path="/bookmark" element={<BookmarkedPosts/>}/>
         <Route path="/liked" element={<LikedPosts/>}/>
       </Routes>
-      {/* <RightNav className="main-right-nav"/> */}
+      <RightNav className="main-right-nav"/>
       </section>
       <Footer />
       <BottomNav/>

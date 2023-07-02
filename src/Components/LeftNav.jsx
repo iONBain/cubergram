@@ -1,39 +1,65 @@
-import { FaBookmark, FaCompass, FaHeart, FaHome } from "react-icons/fa"
-import { NavLink } from "react-router-dom"
+import { useContext } from "react";
+import { FaBookmark, FaCompass, FaHeart, FaHome } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { DataContext } from "../Contexts/DataContext";
 
 const LeftNav = () => {
-    
-    return (
-        <div className="flex-column main-left-nav">
-            <NavLink className="navLink accent">
-            <section className="flex-row gap-8">
-                <FaHome />
-                <p className="white">Home</p>
-            </section>
-            </NavLink>
-            <NavLink className="navLink accent">
-            <section className="flex-row gap-8">
-                <FaCompass />
-                <p className="white">Explore</p>
-            </section>
-            </NavLink>
-            <NavLink className="navLink accent">
-            <section className="flex-row gap-8">
-                <FaBookmark />
-                <p className="white">Saved</p>
-            </section>
-            </NavLink>
-            <NavLink className="navLink accent">
-            <section className="flex-row gap-8">
-                <FaHeart />
-                <p className="white">Liked</p>
-            </section>
-            </NavLink>
-           
-           <button>+ New Post</button>
-        </div>
-    )
-}
+  const {
+    data: { theme },
+  } = useContext(DataContext);
+  return (
+    <div className="flex-column main-left-nav">
+      <NavLink to = "/"
+        className={({ isActive }) =>
+          `nav-link ${theme === "dark" ? "white" : "black"} ${
+            isActive && "selected f-bold"
+          }`
+        }
+      >
+        <section className="flex-row gap-16">
+          <FaHome className="icon-size-xl" />
+          <p className={`${theme === "dark" ? "white" : "black"} `}>Home</p>
+        </section>
+      </NavLink>
+      <NavLink to="/explore"
+        className={({ isActive }) =>
+          `nav-link ${theme === "dark" ? "white" : "black"} ${
+            isActive && "selected f-bold"
+          }`
+        }
+      >
+        <section className="flex-row gap-16">
+          <FaCompass className="icon-size-xl"  />
+          <p className={`${theme === "dark" ? "white" : "black"} `}>Explore</p>
+        </section>
+      </NavLink>
+      <NavLink to = "/bookmark"
+        className={({ isActive }) =>
+          `nav-link ${theme === "dark" ? "white" : "black"} ${
+            isActive && "selected f-bold"
+          }`
+        }
+      >
+        <section className="flex-row gap-16">
+          <FaBookmark className="icon-size-xl"  />
+          <p className={`${theme === "dark" ? "white" : "black"} `}>Saved</p>
+        </section>
+      </NavLink>
+      <NavLink to = "/liked"
+        className={({ isActive }) =>
+          `nav-link ${theme === "dark" ? "white" : "black"} ${
+            isActive && "selected f-bold"
+          }`
+        }
+      >
+        <section className="flex-row gap-16">
+          <FaHeart className="icon-size-xl"  />
+          <p className={`${theme === "dark" ? "white" : "black"} `}>Liked</p>
+        </section>
+      </NavLink>
 
+    </div>
+  );
+};
 
-export default LeftNav
+export default LeftNav;

@@ -74,7 +74,7 @@ const NewPostCard = () => {
           className={`new-post-area-main p-10 ${
             theme === "dark" ? "dark" : "bg-white"
           }`}
-          placeholder="share what's newww . . ."
+          placeholder="so, what's newww ?"
           ref={postTextRef}
         ></textarea>
       </section>

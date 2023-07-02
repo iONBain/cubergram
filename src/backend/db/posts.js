@@ -42,9 +42,9 @@ export const posts = [
           "likedBy": [],
           "dislikedBy": []
       },
-      "username": "iONBain",
-      "createdAt": "2023-06-16T11:17:53+05:30",
-      "updatedAt": "2023-06-16T11:17:53+05:30",
+      "username": "neoGrammer",
+      "createdAt": "2023-06-24T11:17:53+05:30",
+      "updatedAt": "2023-06-24T11:17:53+05:30",
       "id": "3"
   },
   {
@@ -126,9 +126,9 @@ export const posts = [
               "comment": "Keep it going!"
           }
       ],
-      "username": "himanshuPatel",
-      "createdAt": "2023-06-24T11:17:53+05:30",
-      "updatedAt": "2023-06-24T11:17:53+05:30",
+      "username": "neoGrammer",
+      "createdAt": "2023-06-16T11:17:53+05:30",
+      "updatedAt": "2023-06-16T11:17:53+05:30",
       "id": "7"
   },
   {

@@ -44,7 +44,7 @@ const Header = ({ noSearch }) => {
 
   return (
     <div
-      className={`main-header ${theme === "dark" ? "dark" : "bg-white"} gap-16`}
+      className={`main-header z-100 ${theme === "dark" ? "dark" : "bg-white"} gap-16`}
     >
       {/* <FaArrowLeft /> */}
       <img
