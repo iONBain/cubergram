@@ -40,7 +40,7 @@ const FollowUserCard = ({ user }) => {
     return (
         username !== mUser.username && 
             <div>
-            <section className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-5">
+            <section className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-10">
             <Link
               to={`/profile/${userID}`}
               className="text-deco-none flex-row flex-center gap-8"
