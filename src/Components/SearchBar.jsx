@@ -22,8 +22,8 @@ const FoundUserCard = ({ users, username }) => {
         >
           <img src={userAvatar} className="user-avatar-img" alt="" />
           <section className="flex-col flex-left">
-            <p className="f-bold flex-col flex-left">
-              <span className="accent"> {firstname}</span> {lastname}
+            <p className="f-bold flex-row flex-left gap-2">
+              <span className="accent"> {firstname } </span>{lastname.slice(0,1)}
             </p>
             <p className="f-smaller grey">@{username}</p>
           </section>
@@ -58,8 +58,8 @@ const SearchBar = () => {
     });
   };
 
-  const closeBox = () => {
-    setShowSuggestions(false);
+  const setBox = (bool) => {
+    setShowSuggestions(bool);
   };
   // callbacks using useEffect
   useEffect(() => {
@@ -89,6 +89,7 @@ const SearchBar = () => {
         placeholder="Search user ..."
         value={searchedUser}
         onInput={handleSearch}
+        onClick={()=>setBox(true)}
       />
       <section
         id="suggestions-main"
@@ -98,7 +99,7 @@ const SearchBar = () => {
       >
         <section
           className="search-suggestions-overlay"
-          onClick={closeBox}
+          onClick={()=>setBox(false)}
         ></section>
         {foundUserList.length === 0 ? (
           <p className="flex-col flex-center ">No user(s) found!</p>

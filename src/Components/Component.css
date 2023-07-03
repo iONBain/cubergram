@@ -18,9 +18,12 @@
 .header-avatar-img{
     margin: auto 0;
     width: 35px;
+}
+.footer-avatar-img{
+    margin: auto 0;
+    width: 20px;
 
 }
-
 
 
 /* SearchBar */

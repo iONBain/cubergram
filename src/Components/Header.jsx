@@ -91,7 +91,7 @@ const Header = ({ noSearch }) => {
             <NavLink
               to={`/profile/${user?._id}`}
               className={({ isActive }) =>
-                `m-top-auto ${theme === "dark" ? "white" : "black"} ${
+                `m-top-auto icon-logout ${theme === "dark" ? "white" : "black"} ${
                   isActive && "selected"
                 }`
               }

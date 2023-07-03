@@ -44,7 +44,8 @@ const BottomNav = () => {
       <NavLink to={`/profile/${user?._id}`} className={({isActive})=> `nav-link ${
         theme === "dark" ? "white" : "black"
       } ${isActive && "selected"}`}>
-        <FaUserCircle className="fa-icon m-pointer icon-size-l" />
+        {/* <FaUserCircle className="fa-icon m-pointer icon-size-l" /> */}
+        <img src={user.avatar} className="footer-avatar-img fa-icon m-pointer icon-size-l" alt="" />
       </NavLink>
     </div>
   );

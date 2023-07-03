@@ -125,6 +125,12 @@ body{
 .gap-8{
     gap: .5rem;
 }
+.gap-4{
+    gap: .25rem;
+}
+.gap-2{
+    gap: 2px;
+}
 /* textarea */
 textarea{
     border: none;
