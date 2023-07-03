@@ -14,7 +14,7 @@ const Header = ({ noSearch }) => {
     data: { theme, loader },
     dataDispatch,
   } = useContext(DataContext);
-  const {setToken} = useContext(AuthContext)
+  const { setToken } = useContext(AuthContext);
   const nav = useNavigate();
 
   const handleLoader = () => {
@@ -34,49 +34,63 @@ const Header = ({ noSearch }) => {
   const handleNavHome = () => {
     nav("/");
   };
-  
+
   const handleLogout = () => {
-    setToken("")
-    localStorage.removeItem("login")
-    localStorage.removeItem("user")
-    ToastHandler("success","Logged out successfully :)")
+    setToken("");
+    localStorage.removeItem("login");
+    localStorage.removeItem("user");
+    ToastHandler("success", "Logged out successfully :)");
   };
 
   return (
     <div
-      className={`main-header z-100 ${theme === "dark" ? "dark" : "bg-white"} gap-16`}
+      className={`main-header z-100 ${
+        theme === "dark" ? "dark" : "bg-white"
+      } gap-16`}
     >
-      {/* <FaArrowLeft /> */}
-      <img
-        onClick={handleNavHome}
-        src="https://res.cloudinary.com/ionbain/image/upload/v1686625966/samples/cUBergram/assets/logo512_qafcg3.png"
-        width="30px"
-        alt="logo"
-        className="m-pointer"
-      />
-      {noSearch ? <section className="w-30 text-gap-5 search-main">cuberGram</section> : (
+      <p className="flex-row aic gap-16">
+        <img
+          onClick={handleNavHome}
+          src="https://res.cloudinary.com/ionbain/image/upload/v1686625966/samples/cUBergram/assets/logo512_qafcg3.png"
+          width="30px"
+          alt="logo"
+          className="m-pointer"
+        />
+        {noSearch && (
+          <section className="w-30 text-gap-5 search-main">cuberGram</section>
+        )}
+      </p>
+
+      {!noSearch && (
         <>
           <SearchBar />
-          <NavLink to="/liked" className={({isActive})=> `nav-link ${
-        theme === "dark" ? "white" : "black"
-      } ${isActive && "selected"}`}>
-          <FaHeart className="fa-icon m-pointer" />
-      </NavLink>
-          <FiLogOut className="m-pointer" onClick={handleLogout} />
+          <p className="flex-row gap-16">
+            <NavLink
+              to="/liked"
+              className={({ isActive }) =>
+                `nav-link ${theme === "dark" ? "white" : "black"} ${
+                  isActive && "selected"
+                }`
+              }
+            >
+              <FaHeart className="fa-icon m-pointer" />
+            </NavLink>
+            <FiLogOut className="m-pointer" onClick={handleLogout} />
+          {theme === "light" ? (
+            <FaMoon
+              className="accent m-pointer"
+              onClick={() => handleThemeSetter("dark")}
+            />
+          ) : (
+            <FaSun
+              className="accent m-pointer"
+              onClick={() => handleThemeSetter("light")}
+            />
+          )}
+          </p>
         </>
       )}
-      {theme === "light" ? (
-        <FaMoon
-          className="accent m-pointer"
-          onClick={() => handleThemeSetter("dark")}
-        />
-      ) : (
-        <FaSun
-          className="accent m-pointer"
-          onClick={() => handleThemeSetter("light")}
-        />
-      )}
-      {/* <button onClick={handleLoader}>Loader</button> */}
+
     </div>
   );
 };

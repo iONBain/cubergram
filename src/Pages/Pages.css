@@ -46,7 +46,7 @@
 }
 
 
-@media  (min-width: 600px) {
+@media  (min-width: 800px) {
     .main-feed {
       max-width: 50vw;
     }

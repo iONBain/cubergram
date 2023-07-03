@@ -42,14 +42,13 @@ const SearchBar = () => {
 
   // init variables
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
   const foundUserList = users.filter(
     ({ username, firstname, lastname }) =>
       username.toLowerCase().includes(searchedUser.toLowerCase()) ||
       firstname.toLowerCase().includes(searchedUser.toLowerCase()) ||
       lastname.toLowerCase().includes(searchedUser.toLowerCase())
   );
-
 
   // handler functions
   const handleSearch = (e) => {
@@ -59,28 +58,32 @@ const SearchBar = () => {
     });
   };
 
-
+  const closeBox = () => {
+    setShowSuggestions(false);
+  };
   // callbacks using useEffect
   useEffect(() => {
     if (searchedUser.length !== 0) {
       setShowSuggestions(true);
+      const eleSearchMain = document.getElementById("search-main");
+      const eleSuggestionsMain = document.getElementById("suggestions-main");
+      const eleSearchWidth = eleSearchMain.offsetWidth;
+      eleSuggestionsMain.style.width = eleSearchWidth + "px";
     } else {
       setShowSuggestions(false);
     }
   }, [searchedUser]);
   useEffect(() => {
-    
-      setShowSuggestions(false);
-      dataDispatch({
-        type: actionTypes.SET_SEARCHEDUSER,
-        payload: "",
-      });
+    setShowSuggestions(false);
+    dataDispatch({
+      type: actionTypes.SET_SEARCHEDUSER,
+      payload: "",
+    });
   }, [location]);
-
 
   // main render return
   return (
-    <section className="search-main w-30">
+    <section className="search-main w-30" id="search-main">
       <input
         type="text"
         placeholder="Search user ..."
@@ -88,10 +91,15 @@ const SearchBar = () => {
         onInput={handleSearch}
       />
       <section
+        id="suggestions-main"
         className={`search-suggestions ${!showSuggestions && "display-none"}  ${
           theme === "dark" ? "dark" : "bg-white"
         }`}
       >
+        <section
+          className="search-suggestions-overlay"
+          onClick={closeBox}
+        ></section>
         {foundUserList.length === 0 ? (
           <p className="flex-col flex-center ">No user(s) found!</p>
         ) : (

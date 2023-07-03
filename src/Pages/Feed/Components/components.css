@@ -1,7 +1,7 @@
 .main-post-card{
     align-items: flex-start;
     justify-content: start;
-    width: 75%;
+    width: 70%;
     border: 2px solid var(--grey);
     border-radius: 5px;
 }
@@ -54,3 +54,12 @@
     font: inherit;
     color: var(--accent);
 }
+@media  (max-width: 800px) {
+    .sort-by-header-main{
+        width: 100%;
+    }
+    .main-post-card{
+        width: 100%;
+    }
+   
+  }

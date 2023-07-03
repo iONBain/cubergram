@@ -9,6 +9,7 @@ const LeftNav = () => {
   } = useContext(DataContext);
   return (
     <div className="flex-column main-left-nav">
+      <h3>cuberGram</h3>
       <NavLink to = "/"
         className={({ isActive }) =>
           `nav-link ${theme === "dark" ? "white" : "black"} ${

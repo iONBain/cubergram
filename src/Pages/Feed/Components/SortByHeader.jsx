@@ -16,7 +16,7 @@ const SortByHeader = () => {
     });
   };
   return (
-    <section className="w-80 flex-row flex-center gap-8">
+    <section className="w-70 sort-by-header-main flex-row flex-center gap-8">
       <button
         className={`bor-rad-5 flex-grow p-10 no-border m-pointer ${
           sortBy === "like" && "bg-accent text-gap-5"

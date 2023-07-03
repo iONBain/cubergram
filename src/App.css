@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: 1rem;
     margin: 0 1rem;
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
     gap: 2rem;
 }
 .main-right-nav{
@@ -31,7 +31,7 @@
   transform: scale(1.6);
 }
 
-@media  (max-width: 600px) {
+@media  (max-width: 800px) {
     .main-left-nav {
       display: none;
     }

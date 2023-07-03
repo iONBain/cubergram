@@ -40,7 +40,7 @@ const FollowUserCard = ({ user }) => {
     return (
         username !== mUser.username && 
             <div>
-            <section className="border-bottom post-user-header flex-row flex-center w-100 sp-bw p-10">
+            <section className="post-user-header flex-row flex-center w-100 sp-bw p-10">
             <Link
               to={`/profile/${userID}`}
               className="text-deco-none flex-row flex-center gap-8"
@@ -48,7 +48,7 @@ const FollowUserCard = ({ user }) => {
               <img src={userAvatar} className="user-avatar-img" alt={username} />
               <section className="flex-col flex-left">
                 <p className="f-bold f-smaller">
-                   {firstname} {lastname.slice(0,2)}.
+                   {firstname} {lastname.slice(0,1)}
                 </p>
                 <p className="f-smaller grey">@{username}</p>
               </section>
@@ -64,7 +64,7 @@ const RightNav = () => {
     const {data:{users}} = useContext(DataContext)
     return (
         <div className="flex-column main-right-nav">
-            <h3 className="accent">Suggestions</h3>
+            <h3>Suggestions</h3>
             {
                 users && users.map(u => 
                     <FollowUserCard user={u} key={u.username} />
