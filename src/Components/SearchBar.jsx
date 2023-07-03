@@ -22,7 +22,7 @@ const FoundUserCard = ({ users, username }) => {
         >
           <img src={userAvatar} className="user-avatar-img" alt="" />
           <section className="flex-col flex-left">
-            <p className="f-bold">
+            <p className="f-bold flex-col flex-left">
               <span className="accent"> {firstname}</span> {lastname}
             </p>
             <p className="f-smaller grey">@{username}</p>

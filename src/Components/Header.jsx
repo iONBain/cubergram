@@ -86,7 +86,7 @@ const Header = ({ noSearch }) => {
               onClick={() => handleThemeSetter("light")}
             />
             )}
-            <FiLogOut className="m-pointer icon-size-l" onClick={handleLogout} />
+            <FiLogOut className="m-pointer icon-size-l icon-logout" onClick={handleLogout} />
             {/* profile */}
             <NavLink
               to={`/profile/${user?._id}`}

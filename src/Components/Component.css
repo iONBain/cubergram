@@ -21,15 +21,13 @@
 
 }
 
-.m-top-auto{
-    /* margin: auto 0; */
-}
 
 
 /* SearchBar */
 .search-main{
     /* border: 2px solid red; */
     max-width: 300px;
+    min-width: 175px;
     /* margin: 10px; */
 }
 .search-main input{
@@ -103,11 +101,19 @@
 }
 
 
+/* media acc to desktop */
 @media  (min-width: 800px) {
     .bottom-nav-main {
       display: none !important;
     }
     .liked-icon-main{
         display: none !important;
+    }
+}
+
+/* media acc to mobile */
+@media  (max-width: 800px) {
+    .icon-logout {
+      display: none !important;
     }
 }
