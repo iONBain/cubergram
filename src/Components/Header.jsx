@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "../assets/logo.png";
 import SearchBar from "./SearchBar";
-import { FaSun, FaMoon, FaHeart } from "react-icons/fa";
+import { FaSun, FaMoon, FaHeart, FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { DataContext } from "../Contexts/DataContext";
 import actionTypes from "../utils/commands";
@@ -14,7 +14,7 @@ const Header = ({ noSearch }) => {
     data: { theme, loader },
     dataDispatch,
   } = useContext(DataContext);
-  const { setToken } = useContext(AuthContext);
+  const { user,setToken } = useContext(AuthContext);
   const nav = useNavigate();
 
   const handleLoader = () => {
@@ -64,29 +64,41 @@ const Header = ({ noSearch }) => {
       {!noSearch && (
         <>
           <SearchBar />
-          <p className="flex-row gap-16">
+          <p className="flex-row gap-16 aic">
             <NavLink
               to="/liked"
               className={({ isActive }) =>
-                `nav-link ${theme === "dark" ? "white" : "black"} ${
+                `nav-link liked-icon-main ${theme === "dark" ? "white" : "black"} ${
                   isActive && "selected"
                 }`
               }
             >
-              <FaHeart className="fa-icon m-pointer" />
+              <FaHeart className="fa-icon m-pointer icon-size-l" />
             </NavLink>
-            <FiLogOut className="m-pointer" onClick={handleLogout} />
           {theme === "light" ? (
             <FaMoon
-              className="accent m-pointer"
+              className="accent m-pointer icon-size-l"
               onClick={() => handleThemeSetter("dark")}
             />
           ) : (
             <FaSun
-              className="accent m-pointer"
+              className="accent m-pointer icon-size-l"
               onClick={() => handleThemeSetter("light")}
             />
-          )}
+            )}
+            <FiLogOut className="m-pointer icon-size-l" onClick={handleLogout} />
+            {/* profile */}
+            <NavLink
+              to={`/profile/${user?._id}`}
+              className={({ isActive }) =>
+                `m-top-auto ${theme === "dark" ? "white" : "black"} ${
+                  isActive && "selected"
+                }`
+              }
+            >
+              {/* <FaUser className="fa-icon m-pointer" /> */}
+              <img src={user.avatar} className="header-avatar-img" alt="" />
+            </NavLink>
           </p>
         </>
       )}

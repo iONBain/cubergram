@@ -25,7 +25,7 @@ const FoundUserCard = ({ users, username }) => {
             <p className="f-bold">
               <span className="accent"> {firstname}</span> {lastname}
             </p>
-            <p className="f-smaller grey">{username}</p>
+            <p className="f-smaller grey">@{username}</p>
           </section>
         </Link>
       </section>

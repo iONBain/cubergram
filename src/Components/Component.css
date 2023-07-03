@@ -13,11 +13,18 @@
     text-align: center;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     justify-content: space-around;
-    /* background-color: var(--grey); */
+}
+.header-avatar-img{
+    margin: auto 0;
+    width: 35px;
 
 }
+
+.m-top-auto{
+    /* margin: auto 0; */
+}
+
 
 /* SearchBar */
 .search-main{
@@ -90,10 +97,17 @@
     border-top: 2px solid var(--grey);
 }
 
+.liked-icon-main{
+    /* margin: 10px 0  !important; */
+    align-self: center;
+}
 
 
 @media  (min-width: 800px) {
     .bottom-nav-main {
       display: none !important;
     }
-  }
+    .liked-icon-main{
+        display: none !important;
+    }
+}
