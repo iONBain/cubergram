@@ -1,5 +1,7 @@
 import axios from "axios"
+import actionTypes from "../utils/commands"
 
+// follow and unfollow a user
 const followUser = async (userID,token) => {
     try{
 
@@ -13,7 +15,6 @@ const followUser = async (userID,token) => {
             console.error(e)
         }
 }
-
 const unFollowUser = async (userID,token) => {
     try{
 
@@ -25,8 +26,7 @@ const unFollowUser = async (userID,token) => {
         }catch(e){
         console.error(e)
     }
-}
-        
+}    
 
 // specific user page txns
 const getSingleUser = async (userID) => {
@@ -41,6 +41,24 @@ const getSingleUser = async (userID) => {
     }
 }
 
+const updateUserProfile = async (userData,token,dispatch,setUser) => {
+    try{
+      const {data:{user},status} = await axios.post("/api/users/edit", { userData:userData }, { headers: { authorization:token } });
+            if(status===201){
+              dispatch({
+                type: actionTypes.UPDATE_USER,
+                payload: user
+              })
+            }
+            localStorage.setItem("user", JSON.stringify({ user: user }));
+            setUser(user)
+    }
+          catch(e){
+            console.error(e)
+          }
+  }
+  
+  
+  
 
-
-export {followUser,unFollowUser,getSingleUser}
+export {followUser,unFollowUser,getSingleUser,updateUserProfile}

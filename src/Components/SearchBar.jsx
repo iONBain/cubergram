@@ -104,6 +104,7 @@ const SearchBar = () => {
         {foundUserList.length === 0 ? (
           <p className="flex-col flex-center ">No user(s) found!</p>
         ) : (
+          searchedUser.length === 0 ? "Search user(s)" : 
           foundUserList.map(({ username }) => (
             <FoundUserCard username={username} users={users} key={username} />
           ))

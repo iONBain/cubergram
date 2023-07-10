@@ -51,7 +51,6 @@ const actionPostBookmark = async (postId,token,dispatch) => {
           });
           console.log(status,bookmarks)
         if(status===200){
-          // Toasthandler
           dispatch({
             type: actionTypes.SET_BOOKMARKS,
             payload: bookmarks
@@ -69,7 +68,6 @@ const actionPostUnbookmark = async (id,token,dispatch) => {
             },
           });
           if(status===200){
-            // Toasthandler
             dispatch({
               type: actionTypes.SET_BOOKMARKS,
               payload: bookmarks
@@ -80,7 +78,8 @@ const actionPostUnbookmark = async (id,token,dispatch) => {
           console.error(e)
         }
       } 
-      
+
+// add and delete posts
 const actionPostDelete = async (id,token,dispatch) => {
   try{
     const {data:{posts},status} = await axios.delete(`/api/posts/${id}`, {
@@ -100,21 +99,31 @@ const actionPostDelete = async (id,token,dispatch) => {
           console.error(e)
         }
 }
-
-
 const actionPostAdd = async (postData, token,dispatch) => {
   try{
     const {data:{posts},status} = await axios.post("/api/posts", { postData:postData }, { headers: { authorization:token } });
-    // const res = axios.post("/api/posts", { postData }, { headers: { authorization:token } });
-   
           if(status===201){
-            // Toasthandler
             dispatch({
               type: actionTypes.INITIALIZE_POSTS,
               payload: posts
             })
           }
-        // console.log(res)
+  }
+        catch(e){
+          console.error(e)
+        }
+}
+
+// add comments
+const actionCommentAdd = async (postID,commentData, token,dispatch) => {
+  try{
+    const {data:{posts},status} = await axios.post(`/api/comments/add/${postID}`, { commentData:commentData }, { headers: { authorization:token } });
+          if(status===201){
+            dispatch({
+              type: actionTypes.INITIALIZE_POSTS,
+              payload: posts
+            })
+          }
   }
         catch(e){
           console.error(e)
@@ -124,4 +133,4 @@ const actionPostAdd = async (postData, token,dispatch) => {
 
 
 
-export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete,actionPostAdd}
+export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete,actionPostAdd,actionCommentAdd}

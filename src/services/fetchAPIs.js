@@ -1,11 +1,4 @@
-// /api/users/:userId get
 // /api/users/edit post,token
-
-
-// /api/posts/:postId get
-// /api/posts/user/:username get
-// /api/posts post,token [authorization:encodedToken //new post
-// /api/posts/:postId# DELETE,token | delete post
 // /api/posts/edit/:postId post,token | edit
 
 
@@ -13,6 +6,11 @@
 
 
 // DONE ---------------------------------------------------------
+// /api/posts/:postId get
+// /api/users/:userId get
+// /api/posts/user/:username get
+// /api/posts/:postId# DELETE,token | delete post
+// /api/posts post,token [authorization:encodedToken //new post
 
 // in postTxn
 

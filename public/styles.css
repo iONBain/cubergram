@@ -55,6 +55,13 @@ body{
 .accent{
     color: var(--accent);
 }
+.hover-accent{
+    transition: all 0.3s ease;
+}
+.hover-accent:hover{
+    color: var(--accent);
+    
+}
 .bg-accent{
     background-color: var(--accent);
 }
@@ -85,7 +92,12 @@ body{
 .text-justify{
     text-align: justify;
 }
-
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
 .text-deco-none{
     text-decoration: none;
     color: inherit;
@@ -106,6 +118,9 @@ body{
 .flex-center{
     align-items: center;
     justify-content: center;
+}
+.flex-wrap{
+    flex-wrap: wrap;
 }
 .flex-left{
     align-items: start;
@@ -142,7 +157,7 @@ input[type="text"] ,input[type="password"]{
     transition: all 0.2s ease-in;
     outline: none;
     border: 2px solid var(--grey);
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     font-weight: 600;
 }
@@ -155,6 +170,9 @@ input::placeholder{
     color: var(--grey);
 }
 
+.p-rel{
+    position: relative;
+}
 
 .z-100{
     z-index: 100;
@@ -233,6 +251,17 @@ input::placeholder{
     transform-origin: center;
 }
 
+
+/* modal */
+.modal-100{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: red; */
+}
+
 /* borders */
 .border-bottom{
     border-bottom: 2px solid var(--grey);
@@ -245,6 +274,9 @@ input::placeholder{
 }
 .bor-rad-5{
     border-radius: .5rem;
+}
+.bor-rad-50{
+    border-radius: 50%;
 }
 /* buttons */
 .btn {
@@ -276,4 +308,25 @@ input::placeholder{
 /* test */
 .bgcol{
     background-color: red;
+}
+
+
+@media  (max-width: 800px) {
+    .hide-on-mobile {
+      display: none !important;
+    }
+}
+
+
+
+/* for custom modals */
+.overlay-dark{
+    background-color: rgba(43, 43, 43, 0.409);
+}
+.center-box{
+    border: 2px solid var(--accent);
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }

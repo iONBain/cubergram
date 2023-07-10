@@ -28,10 +28,8 @@
 
 /* SearchBar */
 .search-main{
-    /* border: 2px solid red; */
     max-width: 300px;
     min-width: 175px;
-    /* margin: 10px; */
 }
 .search-main input{
     width: 100%;

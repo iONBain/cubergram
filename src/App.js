@@ -1,6 +1,5 @@
 import { Route,Routes } from "react-router-dom";
 import Mockman from "mockman-js"
-// import InfiniteScroll from "./Components/InfiniteScroll";
 import ScrollToTop from "./Components/ScrollToTop";
 import Header from "./Components/Header";
 import Feed from "./Pages/Feed/Feed";
@@ -34,8 +33,10 @@ const App = () => {
   },[])
   // const key = process.env.REACT_APP_CLOUDINARY_KEY
   // console.log(key,"keyy")
+
+
   return (
-    <div className={`App ${theme==="dark" && "dark" }`}>
+    <div className={`App ${theme==="dark" && "dark" }`} >
       <ScrollToTop/>
       <ToastContainer/>
 

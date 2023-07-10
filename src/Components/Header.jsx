@@ -86,18 +86,17 @@ const Header = ({ noSearch }) => {
               onClick={() => handleThemeSetter("light")}
             />
             )}
-            <FiLogOut className="m-pointer icon-size-l icon-logout" onClick={handleLogout} />
+            <FiLogOut className="m-pointer icon-size-l hide-on-mobile" onClick={handleLogout} />
             {/* profile */}
             <NavLink
               to={`/profile/${user?._id}`}
               className={({ isActive }) =>
-                `m-top-auto icon-logout ${theme === "dark" ? "white" : "black"} ${
+                `m-top-auto hide-on-mobile ${theme === "dark" ? "white" : "black"} ${
                   isActive && "selected"
                 }`
               }
             >
-              {/* <FaUser className="fa-icon m-pointer" /> */}
-              <img src={user.avatar} className="header-avatar-img" alt="" />
+              <img src={user.avatar} className="header-avatar-img bor-rad-50" alt="" />
             </NavLink>
           </p>
         </>

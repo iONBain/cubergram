@@ -63,7 +63,7 @@ const FollowUserCard = ({ user }) => {
 const RightNav = () => {
     const {data:{users}} = useContext(DataContext)
     return (
-        <div className="flex-column main-right-nav">
+        <div className="flex-column main-right-nav hide-on-mobile">
             <h3>Suggestions</h3>
             {
                 users && users.map(u => 

@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { DataContext } from "../../../Contexts/DataContext";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaCloudUploadAlt, FaSmile } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { useState } from "react";
 import { actionPostAdd } from "../../../services/postTxn";
@@ -17,7 +17,7 @@ const NewPostCard = () => {
   const postTextRef = useRef();
 
   const handleUploadImage = async () => {
-    ToastHandler("info", "Please wait while we upload your image")
+    ToastHandler("info", "Please wait while we upload your image");
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "cubergram");
@@ -28,12 +28,11 @@ const NewPostCard = () => {
         method: "post",
         body: data,
       });
-      console.log(res,"from res")
+      console.log(res, "from res");
       if (res.status === 200) {
-          const response = await res.json();
-          console.log(response, "from upload img");
+        const response = await res.json();
+        console.log(response, "from upload img");
         return response.url;
-        // await actionPostAdd("hello world", token, dataDispatch);
       } else {
         console.error("cannot upload image");
       }
@@ -67,20 +66,20 @@ const NewPostCard = () => {
     setImage("");
   };
   return (
-    <div className="flex-col main-post-card">
+    <div className="flex-col main-post-card new-post-card-main">
       <section className="flex-row p-10 w-100 gap-16 aic border-bottom">
-        <img src={userAvatar} className="user-avatar-img" alt="" />
+        <img src={userAvatar} className="user-avatar-img bor-rad-50" alt="" />
         <textarea
           className={`new-post-area-main p-10 ${
             theme === "dark" ? "dark" : "bg-white"
           }`}
-          placeholder="so, what's newww ?"
+          placeholder="So, what's new ?"
           ref={postTextRef}
         ></textarea>
       </section>
       <section className="flex-row aic sp-bw w-100 p-10">
-        {/* <FaEmoji /> */}
         <p className="flex-row gap-8">
+          {/* <FaSmile className="fa-icon m-pointer" /> */}
           <label htmlFor="file-input" className="file-label flex-row gap-8">
             <FaCloudUploadAlt className="fa-icon m-pointer" />
             {image && trimAndMaintainFormat(image.name)}
@@ -100,7 +99,6 @@ const NewPostCard = () => {
           className="display-none"
           onChange={(e) => {
             const fileImg = e.target.files[0];
-            console.log(e.target.files);
             if (
               fileImg.type === "image/png" ||
               fileImg.type === "image/jpeg" ||
@@ -125,36 +123,3 @@ const NewPostCard = () => {
 };
 
 export default NewPostCard;
-
-// import { useState } from "react";
-// import "./styles.css";
-// import axios from "axios";
-
-// export default function App() {
-//   const [image, setImage] = useState("");
-//   const handleUploadImage = async () => {
-//     const data = new FormData();
-//     data.append("file", image);
-//     data.append("upload_preset", "cubergram");
-//     data.append("cloud_name", "ionbain");
-//     const urlPost = "https://api.cloudinary.com/v1_1/ionbain/image/upload";
-//     try {
-//       const res = await fetch(urlPost, {
-//         method: "post",
-//         body: data
-//       });
-//       const response = await res.json()
-//       console.log(response);
-//     } catch (e) {
-//       console.error(e);
-//     }
-
-//   };
-//   return (
-//     <div className="App">
-//       <h1>Hello CodeSandbox</h1>
-//       <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-//       <button onClick={handleUploadImage}>upload</button>
-//     </div>
-//   );
-// }

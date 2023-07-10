@@ -4,6 +4,7 @@
 }
 .main-left-nav{
     min-width: 20%;
+    min-height: 70vh;
     border-right: 2px solid var(--accent);
     position: fixed;
     padding: 0 1rem 1rem 0;
@@ -13,10 +14,11 @@
     margin: 0 1rem;
     padding: 0 1rem 1rem 1rem;
     gap: 2rem;
-}
-.main-right-nav{
+  }
+  .main-right-nav{
     position: fixed;
     right: 0;
+    min-height: 70vh;
     padding: 0 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
@@ -33,12 +35,3 @@
 .icon-size-l{
   transform: scale(1.3);
 }
-
-@media  (max-width: 800px) {
-    .main-left-nav {
-      display: none;
-    }
-    .main-right-nav {
-      display: none;
-    }
-  }

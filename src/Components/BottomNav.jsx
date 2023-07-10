@@ -4,7 +4,6 @@ import {
   FaCompass,
   FaHome,
   FaPlusCircle,
-  FaUserCircle,
 } from "react-icons/fa";
 import { DataContext } from "../Contexts/DataContext";
 import { NavLink } from "react-router-dom";
@@ -45,7 +44,7 @@ const BottomNav = () => {
         theme === "dark" ? "white" : "black"
       } ${isActive && "selected"}`}>
         {/* <FaUserCircle className="fa-icon m-pointer icon-size-l" /> */}
-        <img src={user.avatar} className="footer-avatar-img fa-icon m-pointer icon-size-l" alt="" />
+        <img src={user.avatar} className="footer-avatar-img bor-rad-50 fa-icon m-pointer icon-size-l" alt="" />
       </NavLink>
     </div>
   );

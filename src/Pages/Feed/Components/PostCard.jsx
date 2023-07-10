@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { DataContext } from "../../../Contexts/DataContext";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import CommentCard from "./CommentCard";
 import {
+  actionCommentAdd,
   actionPostBookmark,
   actionPostDelete,
   actionPostDislike,
@@ -15,6 +16,39 @@ import { FaBookmark, FaComment, FaHeart, FaShareAlt } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
 import "./components.css";
 import { useState } from "react";
+
+const CommentPop = ({
+  theme,
+  showCommentPop,
+  toggleCommentPop,
+  commentRef,
+  handlePostComment
+}) => {
+  return (
+    <section className={`modal-100 ${!showCommentPop && "display-none"}`}>
+      <section
+        className="modal-100 overlay-dark"
+        onClick={toggleCommentPop}
+      ></section>
+      <section
+        className={`show-comments-main center-box flex-col sp-bw aic p-10 gap-16 ${
+          theme === "dark" ? "dark" : "bg-white"
+        }`}
+      >
+        <h3>Post your comment</h3>
+        <textarea
+          className="flex-grow w-100 bor-rad-5 p-10"
+          ref={commentRef}
+          placeholder="type to add comment..."
+        ></textarea>
+        <p className="flex-row gap-16">
+          <button className="btn" onClick={toggleCommentPop}> Cancel</button>
+          <button className="btn" onClick={handlePostComment}> Post</button>
+        </p>
+      </section>
+    </section>
+  );
+};
 
 const PostCard = ({ postData, showComments }) => {
   const {
@@ -28,13 +62,15 @@ const PostCard = ({ postData, showComments }) => {
     comments,
   } = postData && postData;
   const {
-    data: { users, bookmarks, posts,theme },
+    data: { users, bookmarks, posts, theme },
     dataDispatch,
   } = useContext(DataContext);
-  const {user} = useContext(AuthContext)
-  const foundPost = posts.find(({_id:i})=>i===postID)
-  const {likes: { likedBy}} = foundPost
-  const elapsedTime = calculateElapsedTime(createdAt)
+  const { user } = useContext(AuthContext);
+  const foundPost = posts.find(({ _id: i }) => i === postID);
+  const {
+    likes: { likedBy },
+  } = foundPost;
+  const elapsedTime = calculateElapsedTime(createdAt);
   const { token } = useContext(AuthContext);
 
   const { avatar: userAvatar, _id: userID } = users.find(
@@ -42,19 +78,22 @@ const PostCard = ({ postData, showComments }) => {
   );
 
   const isPostBookmarked = bookmarks.some((i) => i === postID);
-  const isPostLiked = likedBy.some(({username})=> username===user.username)
+  const isPostLiked = likedBy.some(
+    ({ username }) => username === user.username
+  );
   const commentsCount = comments?.length;
 
   const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
+  const [showCommentPop, setShowCommentPop] = useState(false);
   const handlePostPageRedirect = () => {
     navigate(`/posts/${postID}`);
   };
-  
-  // function for header 
+
+  // function for header
   const handleShowOptions = () => {
-    setShowOptions(prev => !prev)
-  }
+    setShowOptions((prev) => !prev);
+  };
 
   // functions for post actions
   const handleBookmark = async () => {
@@ -67,29 +106,49 @@ const PostCard = ({ postData, showComments }) => {
     }
   };
   const handleLike = async (id, token, dataDispatch) => {
-    if(isPostLiked){
+    if (isPostLiked) {
       await actionPostDislike(id, token, dataDispatch);
-      ToastHandler("default", `🤍 Removed like from ${foundPost.username}'s post`);
-    }else{
+      ToastHandler(
+        "default",
+        `🤍 Removed like from ${foundPost.username}'s post`
+      );
+    } else {
       await actionPostLike(id, token, dataDispatch);
       ToastHandler("default", `💚 Liked ${foundPost.username}'s post`);
     }
   };
-  
-  const handleEditPost = () =>{
-    
-  }
-  const handleDeletePost = async () =>{
-    await actionPostDelete(postID,token,dataDispatch)
-  }
+
+  const handleEditPost = () => {};
+  const handleDeletePost = async () => {
+    await actionPostDelete(postID, token, dataDispatch);
+  };
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
       `https://cubergram.netlify.app/posts/${postID}`
     );
-    ToastHandler("success",`${foundPost.username}'s post link copied !`);
-  }
+    ToastHandler("success", `${foundPost.username}'s post link copied !`);
+  };
 
+  // handling comments pop up
+  const commentRef = useRef();
+  const toggleCommentPop = () => {
+    setShowCommentPop((prev) => !prev);
+  };
+  const handleComment = () => {
+    commentRef.current.value = ""
+    toggleCommentPop();
+
+  };
+  const handlePostComment = async () => {
+    if(commentRef.current.value !== "") {
+      await actionCommentAdd(postID,commentRef.current.value,token,dataDispatch)
+      toggleCommentPop();
+      ToastHandler("success", `Commented on ${username}'s post`)
+    }else{
+      ToastHandler("warn", "Add some comment to post !")
+    }
+  }
   // main render paint
   return (
     <div className="flex-col main-post-card">
@@ -99,21 +158,43 @@ const PostCard = ({ postData, showComments }) => {
           to={`/profile/${userID}`}
           className="text-deco-none flex-row flex-center gap-8"
         >
-          <img src={userAvatar} className="user-avatar-img" alt="" />
+          {
+            username !== user?.username ? 
+            <img src={userAvatar} className="user-avatar-img bor-rad-50" alt="" />
+            :
+            <img src={user.avatar} className="user-avatar-img bor-rad-50" alt="" />
+          }
 
-          <p>{username} {isPostLiked}</p>
+          <p>
+            {username} {isPostLiked}
+          </p>
         </Link>
-        <p className={`show-options-main ${username!==user?.username && "display-none"} ` } onBlur={handleShowOptions} >
-
-        <FiMoreVertical className={`m-pointer`} onClick={handleShowOptions} />
-        <section
-        className={`show-options-box ${!showOptions && "display-none"}  ${
-          theme === "dark" ? "dark" : "bg-white"
-        }`}
-      >
-       <p className="m-pointer" onClick={handleEditPost}>Edit</p>
-       <p className="m-pointer" onClick={handleDeletePost}>Delete</p>
-      </section>
+        <p
+          className={`show-options-main ${
+            username !== user?.username && "display-none"
+          } `}
+          onBlur={handleShowOptions}
+        >
+          <FiMoreVertical className={`m-pointer`} onClick={handleShowOptions} />
+          <section
+            className={`${!showOptions && "display-none"}  ${
+              theme === "dark" ? "dark" : "bg-white"
+            }`}
+          >
+            <div className="modal-100" onClick={handleShowOptions}></div>
+            <section
+              className={`show-options-box z-11 ${
+                !showOptions && "display-none"
+              }  ${theme === "dark" ? "dark" : "bg-white"}`}
+            >
+              <p className="m-pointer" onClick={handleEditPost}>
+                Edit
+              </p>
+              <p className="m-pointer" onClick={handleDeletePost}>
+                Delete
+              </p>
+            </section>
+          </section>
         </p>
       </div>
 
@@ -146,7 +227,16 @@ const PostCard = ({ postData, showComments }) => {
             className={`m-pointer ${isPostLiked && "accent"}`}
             onClick={() => handleLike(postID, token, dataDispatch)}
           />
-          <FaComment className="m-pointer" />
+          <FaComment className="m-pointer" onClick={handleComment} />
+          <section >
+            <CommentPop
+              commentRef={commentRef}
+              theme={theme}
+              showCommentPop={showCommentPop}
+              handlePostComment={handlePostComment}
+              toggleCommentPop={toggleCommentPop}
+            />
+          </section>
           <FaShareAlt className="m-pointer" onClick={handleCopyToClipboard} />
         </p>
         <p>

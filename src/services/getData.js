@@ -1,6 +1,7 @@
 import axios from "axios"
 import actionTypes from "../utils/commands"
 
+// return all posts
 const getPosts = async (dispatch) => {
     try{
         const {status,data:posts} = await axios.get("/api/posts")
@@ -15,6 +16,8 @@ const getPosts = async (dispatch) => {
         console.error(e);
       }
 }
+
+// return all users
 const getUsers = async (dispatch) => {
     try{
         const {status,data:users} = await axios.get("/api/users")
@@ -30,7 +33,6 @@ const getUsers = async (dispatch) => {
     }
 }
 
-
 // return single post
 const getSinglePost = async (id) => {
     const {data:{post},status} = await axios.get(`/api/posts/${id}`)
@@ -39,7 +41,7 @@ const getSinglePost = async (id) => {
     }
 }
 
-//return list of bookmarks
+// return list of bookmarks
 const getUserBookmarkedPosts = async (token,dispatch) => {
     try{
 
@@ -57,6 +59,8 @@ const getUserBookmarkedPosts = async (token,dispatch) => {
     }
 
 }
+
+// return list of user's posts
 const getSingleUserPosts = async (username) => {
     try{
         console.log(username)

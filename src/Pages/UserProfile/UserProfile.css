@@ -14,13 +14,49 @@
     
 }
 
+.edit-user-main{
+    position: relative;
+    min-height: 450px;
+    border-radius: 10px;
+    min-width: 350px;
+    
+    height: 100px;
+    overflow-y: scroll;
+    padding: 20px;
+    margin: 10px;
+
+}
+
 .profile-avatar-img{
     width: 4.5rem;
 }
-
+.new-avatar-img{
+    width: 3.8rem;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+.new-avatar-img:hover{
+    transform: scale(1.1);
+}
 .btn-follow{
     padding: .5rem;
 }
+
+/* modal for followingers */
+.modal-followingers{
+    position: absolute;
+    min-width: 70px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    top: 110%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 5px;
+    border-radius: 10px;
+}
+
 
 @media  (min-width: 600px) {
     .main-user-profile {
