@@ -27,6 +27,7 @@ const PostCard = ({ postData, showComments }) => {
     imageURL,
     caption,
     textPost,
+    createdAt,
     updatedAt,
     likes: { likeCount },
     comments,
@@ -40,7 +41,8 @@ const PostCard = ({ postData, showComments }) => {
   const {
     likes: { likedBy },
   } = foundPost;
-  const elapsedTime = calculateElapsedTime(updatedAt);
+  const elapsedTime = calculateElapsedTime(createdAt);
+  const elapsedTimeUpdate = calculateElapsedTime(updatedAt);
   const { token } = useContext(AuthContext);
 
   const { avatar: userAvatar, _id: userID } = users.find(
@@ -282,7 +284,14 @@ const PostCard = ({ postData, showComments }) => {
           ))}
         </section>
       )}
-      <section className="w-100 p-0-0-10-10 grey">{elapsedTime}</section>
+      {
+        username !== user?.username ? 
+
+        <section className="w-100 p-0-0-10-10 grey">{elapsedTime}</section>
+        : 
+        <section className="w-100 p-0-0-10-10 grey">{elapsedTimeUpdate}</section>
+
+      }
 
       {/* edit post card  */}
       <EditPostCard
