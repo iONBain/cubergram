@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { loginService, signInService } from "../services/authenticate";
+import actionTypes from "../utils/commands";
 
 const AuthContext = createContext();
 
@@ -11,7 +12,7 @@ const AuthProvider = ({children}) => {
   const LSUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(LSUser?.user);
   
-  const signUpUser = async ({username, password, firstName, lastName}) => {
+  const signUpUser = async ({username, password, firstName, lastName},dispatch) => {
     try{
       const {
         data: { createdUser, encodedToken },
@@ -24,6 +25,11 @@ const AuthProvider = ({children}) => {
 
         setToken(encodedToken);
         setUser(createdUser);
+
+        dispatch({
+          type:actionTypes.ADD_USER,
+          payload:createdUser
+        })
     }}
     catch(e) {
       console.error(e)

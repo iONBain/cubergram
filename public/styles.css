@@ -146,6 +146,9 @@ body{
 .gap-2{
     gap: 2px;
 }
+.m-auto{
+    margin: 0 auto;
+}
 /* textarea */
 textarea{
     border: none;

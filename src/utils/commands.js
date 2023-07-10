@@ -6,7 +6,8 @@ const actionTypes = {
     SET_THEME:"SET_THEME",
     SET_BOOKMARKS:"SET_BOOKMARKS",
     SET_SORT:"SET_SORT",
-    POST_COMMENT:"POST_COMMENT"
+    POST_COMMENT:"POST_COMMENT",
+    ADD_USER:"ADD_USER"
 }
 
 export default actionTypes

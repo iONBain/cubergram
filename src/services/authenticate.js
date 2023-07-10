@@ -15,10 +15,11 @@ const loginService = async (body) => {
     }
     
 }
-const signInService = async () => {
+const signInService = async (bodyData) => {
     try{
-        const res = await axios.post()
+        const res = await axios.post("/api/auth/signup", bodyData)
         console.log(res)
+        return res
     }
     catch(e){
         console.error(e)
