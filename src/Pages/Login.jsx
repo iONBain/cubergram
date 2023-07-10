@@ -56,11 +56,11 @@ const Login = () => {
         <label htmlFor="login-username" className="hover-accent m-pointer">
           Username:
         </label>
-        <input type="text" id="login-username" ref={loginUserRef} />
+        <input type="text" placeholder="Enter Username" id="login-username" ref={loginUserRef} />
         <label htmlFor="login-password" className="hover-accent m-pointer">
           Password:
         </label>
-        <input type="password" id="login-password" ref={loginPasswordRef} />
+        <input type="password" placeholder="Enter Password" id="login-password" ref={loginPasswordRef} />
         <button onClick={handleLogin} className="btn">
           Log In
         </button>

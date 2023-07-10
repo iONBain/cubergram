@@ -49,35 +49,35 @@ const Signup = () => {
             className="hover-accent m-pointer w-100 sp-bw flex-row gap-16 aic"
           >
             FirstName:
-            <input type="text" id="signup-firstname" ref={suFirstnameRef} />
+            <input type="text" placeholder="Enter Firstname" id="signup-firstname" ref={suFirstnameRef} />
           </label>
           <label
             htmlFor="signup-lastname"
             className="hover-accent m-pointer w-100 sp-bw flex-row gap-16 aic"
           >
             LastName:
-            <input type="text" id="signup-lastname" ref={suLastnameRef} />
+            <input type="text" placeholder="Enter Lastname" id="signup-lastname" ref={suLastnameRef} />
           </label>
           <label
             htmlFor="signup-mail"
             className="hover-accent m-pointer w-100 sp-bw flex-row gap-16 aic"
           >
             Mail:
-            <input type="text" id="signup-mail" ref={suMailRef} />
+            <input type="text" placeholder="Enter Mail" id="signup-mail" ref={suMailRef} />
           </label>
           <label
             htmlFor="signup-username"
             className="hover-accent m-pointer w-100 sp-bw flex-row gap-16 aic"
           >
             Username:
-            <input type="text" id="signup-username" ref={suUsernameRef} />
+            <input type="text" placeholder="Enter Username" id="signup-username" ref={suUsernameRef} />
           </label>
           <label
             htmlFor="signup-password"
             className="hover-accent m-pointer w-100 sp-bw flex-row gap-16 aic"
           >
             Password:
-            <input type="password" id="signup-password" ref={suPasswordRef} />
+            <input type="password" placeholder="Enter Password" id="signup-password" ref={suPasswordRef} />
           </label>
         </section>
         <button onClick={handleSignUp} className="btn">
