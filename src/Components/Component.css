@@ -117,4 +117,7 @@
     .icon-logout {
       display: none !important;
     }
+    .main-footer{
+        margin-bottom: 45px !important;
+    }
 }

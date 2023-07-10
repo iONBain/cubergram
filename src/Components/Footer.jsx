@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   //  main render
   return (
-    <div className="main-footer flex-col flex-center m-bot">
+    <div className="main-footer flex-col flex-center">
       <h3>assembled by @iONBain</h3>
       <p>{"CONNECT "}</p>
       <section className="flex-row flex-center">
