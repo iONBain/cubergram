@@ -11,8 +11,8 @@ const ExplorePosts = () => {
     sortBy === "like"
       ? [...posts].sort((a, b) => b.likes.likeCount - a.likes.likeCount)
       : [...posts].sort((a, b) => {
-          const dateA = new Date(a.createdAt);
-          const dateB = new Date(b.createdAt);
+          const dateA = new Date(a.updatedAt);
+          const dateB = new Date(b.updatedAt);
           return dateB - dateA;
         });
 

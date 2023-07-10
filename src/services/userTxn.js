@@ -41,6 +41,7 @@ const getSingleUser = async (userID) => {
     }
 }
 
+// update self user profile
 const updateUserProfile = async (userData,token,dispatch,setUser) => {
     try{
       const {data:{user},status} = await axios.post("/api/users/edit", { userData:userData }, { headers: { authorization:token } });
@@ -57,8 +58,6 @@ const updateUserProfile = async (userData,token,dispatch,setUser) => {
             console.error(e)
           }
   }
-  
-  
   
 
 export {followUser,unFollowUser,getSingleUser,updateUserProfile}

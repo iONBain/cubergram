@@ -8,14 +8,17 @@ const LeftNav = () => {
     data: { theme },
   } = useContext(DataContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleNavToHome = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
   return (
     <div className="flex-column main-left-nav hide-on-mobile">
-      <h3 className="hover-accent m-pointer" onClick={handleNavToHome}>cuberGram</h3>
-      <NavLink to = "/"
+      <h3 className="hover-accent m-pointer" onClick={handleNavToHome}>
+        cuberGram
+      </h3>
+      <NavLink
+        to="/"
         className={({ isActive }) =>
           `nav-link ${theme === "dark" ? "white" : "black"} ${
             isActive && "selected f-bold"
@@ -24,10 +27,15 @@ const LeftNav = () => {
       >
         <section className="flex-row gap-16">
           <FaHome className="icon-size-xl" />
-          <p className={`${theme === "dark" ? "white" : "black"} hover-accent `}>Home</p>
+          <p
+            className={`${theme === "dark" ? "white" : "black"} hover-accent `}
+          >
+            Home
+          </p>
         </section>
       </NavLink>
-      <NavLink to="/explore"
+      <NavLink
+        to="/explore"
         className={({ isActive }) =>
           ` nav-link ${theme === "dark" ? "white" : "black"} ${
             isActive && "selected f-bold"
@@ -35,11 +43,16 @@ const LeftNav = () => {
         }
       >
         <section className="flex-row gap-16">
-          <FaCompass className="icon-size-xl"  />
-          <p className={`${theme === "dark" ? "white" : "black"} hover-accent `}>Explore</p>
+          <FaCompass className="icon-size-xl" />
+          <p
+            className={`${theme === "dark" ? "white" : "black"} hover-accent `}
+          >
+            Explore
+          </p>
         </section>
       </NavLink>
-      <NavLink to = "/bookmark"
+      <NavLink
+        to="/bookmark"
         className={({ isActive }) =>
           `nav-link ${theme === "dark" ? "white" : "black"} ${
             isActive && "selected f-bold"
@@ -47,11 +60,16 @@ const LeftNav = () => {
         }
       >
         <section className="flex-row gap-16">
-          <FaBookmark className="icon-size-xl"  />
-          <p className={`${theme === "dark" ? "white" : "black"} hover-accent `}>Saved</p>
+          <FaBookmark className="icon-size-xl" />
+          <p
+            className={`${theme === "dark" ? "white" : "black"} hover-accent `}
+          >
+            Saved
+          </p>
         </section>
       </NavLink>
-      <NavLink to = "/liked"
+      <NavLink
+        to="/liked"
         className={({ isActive }) =>
           `nav-link ${theme === "dark" ? "white" : "black"} ${
             isActive && "selected f-bold"
@@ -59,11 +77,14 @@ const LeftNav = () => {
         }
       >
         <section className="flex-row gap-16">
-          <FaHeart className="icon-size-xl"  />
-          <p className={`${theme === "dark" ? "white" : "black"} hover-accent `}>Liked</p>
+          <FaHeart className="icon-size-xl" />
+          <p
+            className={`${theme === "dark" ? "white" : "black"} hover-accent `}
+          >
+            Liked
+          </p>
         </section>
       </NavLink>
-
     </div>
   );
 };

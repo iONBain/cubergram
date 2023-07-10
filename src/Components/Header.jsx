@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "../assets/logo.png";
 import SearchBar from "./SearchBar";
-import { FaSun, FaMoon, FaHeart, FaUser } from "react-icons/fa";
+import { FaSun, FaMoon, FaHeart } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { DataContext } from "../Contexts/DataContext";
 import actionTypes from "../utils/commands";
@@ -11,18 +11,11 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { ToastHandler } from "../utils/utils";
 const Header = ({ noSearch }) => {
   const {
-    data: { theme, loader },
+    data: { theme },
     dataDispatch,
   } = useContext(DataContext);
-  const { user,setToken } = useContext(AuthContext);
+  const { user, setToken } = useContext(AuthContext);
   const nav = useNavigate();
-
-  const handleLoader = () => {
-    dataDispatch({
-      type: actionTypes.SET_LOADER,
-      payload: loader ? false : true,
-    });
-  };
 
   const handleThemeSetter = (theme) => {
     dataDispatch({
@@ -68,40 +61,45 @@ const Header = ({ noSearch }) => {
             <NavLink
               to="/liked"
               className={({ isActive }) =>
-                `nav-link liked-icon-main ${theme === "dark" ? "white" : "black"} ${
-                  isActive && "selected"
-                }`
+                `nav-link liked-icon-main ${
+                  theme === "dark" ? "white" : "black"
+                } ${isActive && "selected"}`
               }
             >
               <FaHeart className="fa-icon m-pointer icon-size-l" />
             </NavLink>
-          {theme === "light" ? (
-            <FaMoon
-              className="accent m-pointer icon-size-l"
-              onClick={() => handleThemeSetter("dark")}
-            />
-          ) : (
-            <FaSun
-              className="accent m-pointer icon-size-l"
-              onClick={() => handleThemeSetter("light")}
-            />
+            {theme === "light" ? (
+              <FaMoon
+                className="accent m-pointer icon-size-l"
+                onClick={() => handleThemeSetter("dark")}
+              />
+            ) : (
+              <FaSun
+                className="accent m-pointer icon-size-l"
+                onClick={() => handleThemeSetter("light")}
+              />
             )}
-            <FiLogOut className="m-pointer icon-size-l hide-on-mobile" onClick={handleLogout} />
-            {/* profile */}
+            <FiLogOut
+              className="m-pointer icon-size-l hide-on-mobile"
+              onClick={handleLogout}
+            />
             <NavLink
               to={`/profile/${user?._id}`}
               className={({ isActive }) =>
-                `m-top-auto hide-on-mobile ${theme === "dark" ? "white" : "black"} ${
-                  isActive && "selected"
-                }`
+                `m-top-auto hide-on-mobile ${
+                  theme === "dark" ? "white" : "black"
+                } ${isActive && "selected"}`
               }
             >
-              <img src={user.avatar} className="header-avatar-img bor-rad-50" alt="" />
+              <img
+                src={user.avatar}
+                className="header-avatar-img bor-rad-50"
+                alt=""
+              />
             </NavLink>
           </p>
         </>
       )}
-
     </div>
   );
 };

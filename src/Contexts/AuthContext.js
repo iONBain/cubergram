@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { loginService, signInService } from "../services/authenticate";
-import { useEffect } from "react";
 
 const AuthContext = createContext();
 
@@ -40,8 +39,6 @@ const AuthProvider = ({children}) => {
               status,
             } = await loginService({username, password});
             if (status === 200) {
-            //   ToastHandler("success", "Successfully logged in :)");
-
               localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
               localStorage.setItem("user", JSON.stringify({ user: foundUser }));
 

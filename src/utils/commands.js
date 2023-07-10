@@ -7,10 +7,6 @@ const actionTypes = {
     SET_BOOKMARKS:"SET_BOOKMARKS",
     SET_SORT:"SET_SORT",
     POST_COMMENT:"POST_COMMENT"
-    // TOGGLE_SHOWOPTIONS:"TOGGLE_SHOWOPTIONS",
-
 }
-
-
 
 export default actionTypes

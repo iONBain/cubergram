@@ -33,10 +33,16 @@
     min-width: 300px;
 
 }
+.show-edit-post-main{
+    position: relative;
+    min-height: 300px;
+    border-radius: 10px;
+    min-width: 300px;
+
+}
 .show-options-box{
     width: 200px;
     min-height: 5rem;
-    /* min-width: 100%; */
     position: absolute;
     top: 25px;
     right: 0px;
@@ -48,7 +54,6 @@
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    /* background-color: var(--accent); */
     border: 2px solid var(--accent);
     border-radius: 5px;
 }

@@ -3,7 +3,6 @@ import { dataReducer, initialState } from "../Reducers/DataReducer";
 
 const DataContext = createContext()
 
-
 const DataProvider = ({children}) => {
     const [state,dispatch] = useReducer(dataReducer,initialState)
     useEffect(()=> console.log(state,"Datacontext"),[state])

@@ -14,7 +14,7 @@ import { AuthContext } from "../../Contexts/AuthContext";
 import { ToastHandler } from "../../utils/utils";
 import { DataContext } from "../../Contexts/DataContext";
 import { useRef } from "react";
-import ModalProfile from "./ModalProfile";
+// import ModalProfile from "./ModalProfile";
 
 const EditProfileModal = ({
   profileArr,

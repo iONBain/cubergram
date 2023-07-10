@@ -25,8 +25,6 @@ const ModalProfile = ({ dataUsers,theme,showFollowingers,toggleFollowingers }) =
         })}
         </section>
         </section>
-      // <section className="modal-followingers">
-      // </section>
     );
   };
 

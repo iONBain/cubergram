@@ -5,13 +5,8 @@
     width: 100%;
     min-height: 80vh;
 }
-.user-stats-main{
-    /* background-color: red; */
-}
 .top-user-profile{
-    /* border-bottom: 2px solid var(--grey); */
-    padding-bottom: 10px;
-    
+    padding-bottom: 10px;    
 }
 
 .edit-user-main{
@@ -19,12 +14,10 @@
     min-height: 450px;
     border-radius: 10px;
     min-width: 350px;
-    
     height: 100px;
     overflow-y: scroll;
     padding: 20px;
     margin: 10px;
-
 }
 
 .profile-avatar-img{
@@ -49,7 +42,6 @@
     background-color: red;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     top: 110%;
     left: 50%;
     transform: translate(-50%,-50%);

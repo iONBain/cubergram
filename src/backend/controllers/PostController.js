@@ -124,6 +124,7 @@ export const editPostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
+    const nData = {...postData,updatedAt:formatDate()}
     let post = schema.posts.findBy({ _id: postId }).attrs;
     if (post.username !== user.username) {
       return new Response(
@@ -134,7 +135,7 @@ export const editPostHandler = function (schema, request) {
         }
       );
     }
-    post = { ...post, ...postData };
+    post = { ...post, ...nData };
     this.db.posts.update({ _id: postId }, post);
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {

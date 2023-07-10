@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CommentCard from "./CommentCard";
 import {
   actionCommentAdd,
+  actionEditPost,
   actionPostBookmark,
   actionPostDelete,
   actionPostDislike,
@@ -16,39 +17,8 @@ import { FaBookmark, FaComment, FaHeart, FaShareAlt } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
 import "./components.css";
 import { useState } from "react";
-
-const CommentPop = ({
-  theme,
-  showCommentPop,
-  toggleCommentPop,
-  commentRef,
-  handlePostComment
-}) => {
-  return (
-    <section className={`modal-100 ${!showCommentPop && "display-none"}`}>
-      <section
-        className="modal-100 overlay-dark"
-        onClick={toggleCommentPop}
-      ></section>
-      <section
-        className={`show-comments-main center-box flex-col sp-bw aic p-10 gap-16 ${
-          theme === "dark" ? "dark" : "bg-white"
-        }`}
-      >
-        <h3>Post your comment</h3>
-        <textarea
-          className="flex-grow w-100 bor-rad-5 p-10"
-          ref={commentRef}
-          placeholder="type to add comment..."
-        ></textarea>
-        <p className="flex-row gap-16">
-          <button className="btn" onClick={toggleCommentPop}> Cancel</button>
-          <button className="btn" onClick={handlePostComment}> Post</button>
-        </p>
-      </section>
-    </section>
-  );
-};
+import EditPostCard from "./EditPostCard";
+import CommentPop from "./CommentPop";
 
 const PostCard = ({ postData, showComments }) => {
   const {
@@ -57,7 +27,7 @@ const PostCard = ({ postData, showComments }) => {
     imageURL,
     caption,
     textPost,
-    createdAt,
+    updatedAt,
     likes: { likeCount },
     comments,
   } = postData && postData;
@@ -70,7 +40,7 @@ const PostCard = ({ postData, showComments }) => {
   const {
     likes: { likedBy },
   } = foundPost;
-  const elapsedTime = calculateElapsedTime(createdAt);
+  const elapsedTime = calculateElapsedTime(updatedAt);
   const { token } = useContext(AuthContext);
 
   const { avatar: userAvatar, _id: userID } = users.find(
@@ -86,6 +56,8 @@ const PostCard = ({ postData, showComments }) => {
   const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
   const [showCommentPop, setShowCommentPop] = useState(false);
+  const [showEditCard, setShowEditCard] = useState(false);
+
   const handlePostPageRedirect = () => {
     navigate(`/posts/${postID}`);
   };
@@ -93,6 +65,7 @@ const PostCard = ({ postData, showComments }) => {
   // function for header
   const handleShowOptions = () => {
     setShowOptions((prev) => !prev);
+    setShowEditCard(false);
   };
 
   // functions for post actions
@@ -118,11 +91,30 @@ const PostCard = ({ postData, showComments }) => {
     }
   };
 
-  const handleEditPost = () => {};
   const handleDeletePost = async () => {
     await actionPostDelete(postID, token, dataDispatch);
   };
 
+  // post edit pop functions
+  const editPostRef = useRef();
+  const toggleEditCard = () => {
+    setShowEditCard((prev) => !prev);
+  };
+  const handleShowEditPost = () => {
+    setShowOptions(false);
+    editPostRef.current.value = textPost;
+    setShowEditCard(true);
+  };
+
+  const handleEditPost = async () => {
+    console.log("hi from edit post");
+    const editedData = { ...postData, textPost: editPostRef.current.value };
+    await actionEditPost(postID, editedData, token, dataDispatch);
+    toggleEditCard();
+    ToastHandler("success", "Post edited successfully!");
+  };
+
+  // copy and share link
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
       `https://cubergram.netlify.app/posts/${postID}`
@@ -135,20 +127,24 @@ const PostCard = ({ postData, showComments }) => {
   const toggleCommentPop = () => {
     setShowCommentPop((prev) => !prev);
   };
-  const handleComment = () => {
-    commentRef.current.value = ""
+  const handleShowCommentPopup = () => {
+    commentRef.current.value = "";
     toggleCommentPop();
-
   };
   const handlePostComment = async () => {
-    if(commentRef.current.value !== "") {
-      await actionCommentAdd(postID,commentRef.current.value,token,dataDispatch)
+    if (commentRef.current.value !== "") {
+      await actionCommentAdd(
+        postID,
+        commentRef.current.value,
+        token,
+        dataDispatch
+      );
       toggleCommentPop();
-      ToastHandler("success", `Commented on ${username}'s post`)
-    }else{
-      ToastHandler("warn", "Add some comment to post !")
+      ToastHandler("success", `Commented on ${username}'s post`);
+    } else {
+      ToastHandler("warn", "Add some comment to post !");
     }
-  }
+  };
   // main render paint
   return (
     <div className="flex-col main-post-card">
@@ -158,12 +154,19 @@ const PostCard = ({ postData, showComments }) => {
           to={`/profile/${userID}`}
           className="text-deco-none flex-row flex-center gap-8"
         >
-          {
-            username !== user?.username ? 
-            <img src={userAvatar} className="user-avatar-img bor-rad-50" alt="" />
-            :
-            <img src={user.avatar} className="user-avatar-img bor-rad-50" alt="" />
-          }
+          {username !== user?.username ? (
+            <img
+              src={userAvatar}
+              className="user-avatar-img bor-rad-50"
+              alt=""
+            />
+          ) : (
+            <img
+              src={user.avatar}
+              className="user-avatar-img bor-rad-50"
+              alt=""
+            />
+          )}
 
           <p>
             {username} {isPostLiked}
@@ -187,13 +190,14 @@ const PostCard = ({ postData, showComments }) => {
                 !showOptions && "display-none"
               }  ${theme === "dark" ? "dark" : "bg-white"}`}
             >
-              <p className="m-pointer" onClick={handleEditPost}>
+              <p className="m-pointer" onClick={handleShowEditPost}>
                 Edit
               </p>
               <p className="m-pointer" onClick={handleDeletePost}>
                 Delete
               </p>
             </section>
+            <section></section>
           </section>
         </p>
       </div>
@@ -227,8 +231,8 @@ const PostCard = ({ postData, showComments }) => {
             className={`m-pointer ${isPostLiked && "accent"}`}
             onClick={() => handleLike(postID, token, dataDispatch)}
           />
-          <FaComment className="m-pointer" onClick={handleComment} />
-          <section >
+          <FaComment className="m-pointer" onClick={handleShowCommentPopup} />
+          <section>
             <CommentPop
               commentRef={commentRef}
               theme={theme}
@@ -274,11 +278,20 @@ const PostCard = ({ postData, showComments }) => {
       {showComments && comments && (
         <section className="comment-section">
           {comments.map((comment) => (
-            <CommentCard commentData={comment} />
+            <CommentCard commentData={comment} key={comment.comment} />
           ))}
         </section>
       )}
       <section className="w-100 p-0-0-10-10 grey">{elapsedTime}</section>
+
+      {/* edit post card  */}
+      <EditPostCard
+        editPostRef={editPostRef}
+        theme={theme}
+        showEditCard={showEditCard}
+        handleEditPost={handleEditPost}
+        toggleEditCard={toggleEditCard}
+      />
     </div>
   );
 };

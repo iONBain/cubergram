@@ -23,7 +23,8 @@ const FoundUserCard = ({ users, username }) => {
           <img src={userAvatar} className="user-avatar-img" alt="" />
           <section className="flex-col flex-left">
             <p className="f-bold flex-row flex-left gap-2">
-              <span className="accent"> {firstname } </span>{lastname.slice(0,1)}
+              <span className="accent"> {firstname} </span>
+              {lastname.slice(0, 1)}
             </p>
             <p className="f-smaller grey">@{username}</p>
           </section>
@@ -89,7 +90,7 @@ const SearchBar = () => {
         placeholder="Search user ..."
         value={searchedUser}
         onInput={handleSearch}
-        onClick={()=>setBox(true)}
+        onClick={() => setBox(true)}
       />
       <section
         id="suggestions-main"
@@ -99,12 +100,13 @@ const SearchBar = () => {
       >
         <section
           className="search-suggestions-overlay"
-          onClick={()=>setBox(false)}
+          onClick={() => setBox(false)}
         ></section>
         {foundUserList.length === 0 ? (
           <p className="flex-col flex-center ">No user(s) found!</p>
+        ) : searchedUser.length === 0 ? (
+          "Search user(s)"
         ) : (
-          searchedUser.length === 0 ? "Search user(s)" : 
           foundUserList.map(({ username }) => (
             <FoundUserCard username={username} users={users} key={username} />
           ))

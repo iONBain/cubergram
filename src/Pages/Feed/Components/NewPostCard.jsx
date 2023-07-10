@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { AuthContext } from "../../../Contexts/AuthContext";
 import { DataContext } from "../../../Contexts/DataContext";
-import { FaCloudUploadAlt, FaSmile } from "react-icons/fa";
+import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { useState } from "react";
 import { actionPostAdd } from "../../../services/postTxn";
@@ -79,6 +79,7 @@ const NewPostCard = () => {
       </section>
       <section className="flex-row aic sp-bw w-100 p-10">
         <p className="flex-row gap-8">
+          {/* feat to add */}
           {/* <FaSmile className="fa-icon m-pointer" /> */}
           <label htmlFor="file-input" className="file-label flex-row gap-8">
             <FaCloudUploadAlt className="fa-icon m-pointer" />
@@ -104,7 +105,6 @@ const NewPostCard = () => {
               fileImg.type === "image/jpeg" ||
               fileImg.type === "image/jpg"
             ) {
-              // console.log(image,"image here")
               setImage(e.target.files[0]);
             } else {
               ToastHandler(

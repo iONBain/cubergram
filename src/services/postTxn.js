@@ -114,7 +114,22 @@ const actionPostAdd = async (postData, token,dispatch) => {
         }
 }
 
-// add comments
+// edit post [of self only]
+const actionEditPost = async (postID,postData, token,dispatch) => {
+  try{
+    const {data:{posts},status} = await axios.post(`/api/posts/edit/${postID}`, { postData:postData }, { headers: { authorization:token } });
+          if(status===201){
+            dispatch({
+              type: actionTypes.INITIALIZE_POSTS,
+              payload: posts
+            })
+          }
+  }
+        catch(e){
+          console.error(e)
+        }
+}
+// add comment
 const actionCommentAdd = async (postID,commentData, token,dispatch) => {
   try{
     const {data:{posts},status} = await axios.post(`/api/comments/add/${postID}`, { commentData:commentData }, { headers: { authorization:token } });
@@ -133,4 +148,4 @@ const actionCommentAdd = async (postID,commentData, token,dispatch) => {
 
 
 
-export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete,actionPostAdd,actionCommentAdd}
+export {actionPostBookmark,actionPostUnbookmark,actionPostDislike,actionPostLike,actionPostDelete,actionPostAdd,actionEditPost,actionCommentAdd}

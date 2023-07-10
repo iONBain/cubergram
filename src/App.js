@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "./Contexts/AuthContext";
 import LikedPosts from "./Pages/LikedPosts";
 import ExplorePosts from "./Pages/ExplorePosts";
+import Signup from "./Pages/Signup";
 
 const App = () => {
  
@@ -31,10 +32,8 @@ const App = () => {
     getUsers(dataDispatch);
     getPosts(dataDispatch);
   },[])
-  // const key = process.env.REACT_APP_CLOUDINARY_KEY
-  // console.log(key,"keyy")
 
-
+  // main render
   return (
     <div className={`App ${theme==="dark" && "dark" }`} >
       <ScrollToTop/>
@@ -67,6 +66,7 @@ const App = () => {
       <>
       <Header noSearch/>
       <Routes>
+        <Route path="/signup" element={<Signup/>} />     
         <Route path="*" element={<Login/>} />     
         </Routes>
       </>
