@@ -7,10 +7,10 @@
 
 /* variables */
 :root {
-    --grey: grey;
-    --accent: rgb(26, 192, 82);
-    --black: rgb(17, 29, 39);
-    --white:rgb(242, 237, 255);
+    --grey: rgb(142, 157, 140);
+    --accent: rgb(57, 214, 110);
+    --black: rgb(15, 37, 54);
+    --white:rgb(255 250 240);
 }
 
 body{
