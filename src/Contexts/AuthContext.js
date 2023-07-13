@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createContext } from "react";
 import { loginService, signInService } from "../services/authenticate";
 import actionTypes from "../utils/commands";
+import { ToastHandler } from "../utils/utils";
 
 const AuthContext = createContext();
 
@@ -40,19 +41,29 @@ const AuthProvider = ({children}) => {
         console.log(username,password)
         if (username && password !== "") {
           try {
-            const {
-              data: {  encodedToken,foundUser },
-              status,
-            } = await loginService({username, password});
-            if (status === 200) {
-              localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
-              localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+            const res = await loginService({username, password});
+            if(res.response?.status===401){
+              ToastHandler("warn","Invalid Credentials")
+            }else if (res.response?.status ===404){
+              ToastHandler("error","User not registered")
 
-              setToken(encodedToken);
-              setUser(foundUser);
-            }
+            }else{
+              const {
+                  data: {  encodedToken,foundUser },
+                  status,
+                } = res
+                if (status === 200) {
+                    localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
+                    localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+                  
+                    setToken(encodedToken);
+                    setUser(foundUser);
+                  }
+                  return status
+                }
           } catch (error) {
             console.log("Error occured in logging in user", error);
+            return(error)
           }
         }
       };

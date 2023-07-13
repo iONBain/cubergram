@@ -268,7 +268,7 @@ const PostCard = ({ postData, showComments }) => {
       )}
 
       {/* comment section */}
-      {!showComments && commentsCount && (
+      {!showComments && commentsCount !==0 && (
         <p
           className="text-likes text-comments m-pointer p-l-r-10 grey"
           onClick={() => handlePostPageRedirect()}

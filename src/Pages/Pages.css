@@ -8,6 +8,7 @@
 .main-post-page{
     min-height: 90vh;
     display: flex;
+    width: 100%;
     align-items: flex-start;
     margin: 0 auto;
     justify-content: center;
@@ -20,8 +21,9 @@
 .bookmarks-main{
     min-height: 90vh;
     display: flex;
+    width: 100%;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     margin: 0 auto;
     gap: 1rem;

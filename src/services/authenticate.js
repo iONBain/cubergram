@@ -12,6 +12,7 @@ const loginService = async (body) => {
     }
     catch(e){
         console.error(e)
+        return e
     }
     
 }

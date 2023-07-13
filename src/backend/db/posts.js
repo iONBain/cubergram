@@ -28,6 +28,7 @@ export const posts = [
           "likedBy": [],
           "dislikedBy": []
       },
+      "comments": [],
       "username": "iONBain",
       "createdAt": "2023-01-26T11:17:53+05:30",
       "updatedAt": "2023-01-26T11:17:53+05:30",
@@ -42,6 +43,7 @@ export const posts = [
           "likedBy": [],
           "dislikedBy": []
       },
+      "comments": [],
       "username": "neoGrammer",
       "createdAt": "2023-06-24T11:17:53+05:30",
       "updatedAt": "2023-06-24T11:17:53+05:30",
@@ -56,6 +58,7 @@ export const posts = [
           "likedBy": [],
           "dislikedBy": []
       },
+      "comments": [],
       "username": "iONBain",
       "createdAt": "2023-02-20T11:17:53+05:30",
       "updatedAt": "2023-02-20T11:17:53+05:30",

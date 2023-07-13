@@ -15,13 +15,20 @@ const Login = () => {
     navigate("/signup");
   };
   const handleLogin = async () => {
+    if(loginUserRef.current.value === "" || loginPasswordRef.current.value === ""){
+      ToastHandler("warn", "Please fill in credentials")
+      return
+    }
     try {
       const bodyLoginTest = {
         username: loginUserRef.current.value,
         password: loginPasswordRef.current.value,
       };
-      await loginUser(bodyLoginTest);
-      ToastHandler("success", `Logged in successfully`);
+      const res = await loginUser(bodyLoginTest);
+      console.log(res,"from main")
+      if(res===200){
+        ToastHandler("success", `Logged in successfully`);
+      }
       setToken(localStorage.getItem("login"));
     } catch (e) {
       console.error(e);
