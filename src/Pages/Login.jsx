@@ -68,12 +68,15 @@ const Login = () => {
           Password:
         </label>
         <input type="password" placeholder="Enter Password" id="login-password" ref={loginPasswordRef} />
+        {/* <p className="flex-row gap-16 flex-center"> */}
+
         <button onClick={handleLogin} className="btn">
           Log In
         </button>
         <button onClick={handleTestUser} className="btn">
           Log In as Guest
         </button>
+        {/* </p> */}
         <p className="text-center f-smaller">
           Dont have an account?{" "}
           <span
