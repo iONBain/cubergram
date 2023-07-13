@@ -62,14 +62,18 @@ const SearchBar = () => {
   const setBox = (bool) => {
     setShowSuggestions(bool);
   };
+
+  const eleSearchMain = document.getElementById("search-main");
+  const eleSuggestionsMain = document.getElementById("suggestions-main");
+  const setBoxDynamicWidth = () => {
+    const eleSearchWidth = eleSearchMain.offsetWidth;
+    eleSuggestionsMain.style.width = eleSearchWidth + "px";
+  };
   // callbacks using useEffect
   useEffect(() => {
     if (searchedUser.length !== 0) {
       setShowSuggestions(true);
-      const eleSearchMain = document.getElementById("search-main");
-      const eleSuggestionsMain = document.getElementById("suggestions-main");
-      const eleSearchWidth = eleSearchMain.offsetWidth;
-      eleSuggestionsMain.style.width = eleSearchWidth + "px";
+      setBoxDynamicWidth()
     } else {
       setShowSuggestions(false);
     }
@@ -90,6 +94,7 @@ const SearchBar = () => {
         placeholder="Search user ..."
         value={searchedUser}
         onInput={handleSearch}
+        onFocus={setBoxDynamicWidth}
         onClick={() => setBox(true)}
       />
       <section
